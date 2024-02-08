@@ -23,6 +23,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/jsons/
 
   fonts:
     - family: Amiri
