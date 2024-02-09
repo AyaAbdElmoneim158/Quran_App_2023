@@ -1,5 +1,5 @@
-import 'package:app/app.dart';
 import 'package:app/not_found_page.dart';
+import 'package:app/views/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -10,7 +10,7 @@ class Routes {
 List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: Routes.initRoute,
-    page: () => const QuranApp(),
+    page: () => const SplashScreen(),
     transition: Transition.zoom,
   ),
 ];

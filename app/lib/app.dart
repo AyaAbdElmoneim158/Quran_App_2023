@@ -23,14 +23,14 @@ class QuranApp extends StatelessWidget {
         initialRoute: Routes.initRoute,
         getPages: getPages,
         unknownRoute: unknownRoute(),
-        home: Scaffold(
+        /*home: Scaffold(
           body: Center(
             child: Text(
               "Quran App 📖",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
-        ),
+        ),*/
       ),
     );
   }

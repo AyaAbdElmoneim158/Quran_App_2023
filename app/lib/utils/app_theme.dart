@@ -8,7 +8,7 @@ abstract class AppTheme {
         appBarTheme: Styles.appBarThemeLight,
         bottomNavigationBarTheme: Styles.bottomNavigationBarThemeLight,
         dialogBackgroundColor: AppColors.kWitheColor,
-        textTheme: const TextTheme(
+        textTheme:  TextTheme(
           titleLarge: Styles.titleLargeStyleLight,
           titleMedium: Styles.titleMediumStyleLight,
           bodySmall: Styles.bodySmallStyleLight,
@@ -22,7 +22,7 @@ abstract class AppTheme {
         appBarTheme: Styles.appBarThemeDart,
         dialogBackgroundColor: AppColors.kbgDarkColor,
         bottomNavigationBarTheme: Styles.bottomNavigationBarThemeDart,
-        textTheme: const TextTheme(
+        textTheme:  TextTheme(
           titleLarge: Styles.titleLargeStyleDark,
           titleMedium: Styles.titleMediumStyleDark,
           bodySmall: Styles.bodySmallStyleDark,
