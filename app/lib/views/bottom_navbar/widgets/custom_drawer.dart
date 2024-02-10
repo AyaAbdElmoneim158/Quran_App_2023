@@ -46,6 +46,7 @@ class CustomDrawer extends StatelessWidget {
                   AppString.appName,
                   style: Styles.drawerQuranTextStyle(),
                 ),
+                const SizedBox(height: 8),
                 Text(
                   AppString.splashText,
                   style: Styles.drawerQuranDescTextStyle(context),

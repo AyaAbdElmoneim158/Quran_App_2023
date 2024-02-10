@@ -179,4 +179,40 @@ abstract class Styles {
             fontSize: 28.sp,
             fontFamily: AppString.poppinsFont,
           );
+
+  static TextStyle? ayahNo1TextStyle = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.poppinsFont,
+  );
+
+  static TextStyle? alFatiahTextStyle = const TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 18,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.poppinsFont,
+  );
+
+  static TextStyle? lastReadTextStyle = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.poppinsFont,
+  );
+  static Gradient cardGradientColors = const LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      AppColors.kPurpleD0Color,
+      AppColors.kPurpleD00Color,
+    ],
+  );
+
+  static TextStyle? asslamualaikumTextStyle = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 18,
+    color: AppColors.kTextMediumColor,
+    fontFamily: AppString.poppinsFont,
+  );
 }

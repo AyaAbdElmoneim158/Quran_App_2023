@@ -14,4 +14,11 @@ abstract class AppString {
 
   static const String darkMode = "Dark mode";
   static const String lightMode = "Light mode";
+
+  static const String ayahNo1 = "Ayah No: 1";
+  static const String alFatiah = "Al-Fatiah";
+  static const String lastRead = "Last Read";
+  static const String asslamualaikum = "Asslamualaikum";
+  static const String tanvirAhassan = "Tanvir Ahassan";
+ static const String emptyList =   "List is Empty";
 }

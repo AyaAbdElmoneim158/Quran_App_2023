@@ -1,5 +1,6 @@
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
+import 'package:app/views/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -15,25 +16,27 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
 
   int currentIndex = 0;
   List<Widget> screens(context) => [
-        Center(
+        /* Center(
             child: Text(
           "Home Screen",
+          style: Theme.of(context).textTheme.titleLarge,
+        )),*/
+
+        const HomeScreen(),
+        Center(
+            child: Text(
+          "Hadith Screen",
           style: Theme.of(context).textTheme.titleLarge,
         )),
         Center(
             child: Text(
-          "Hadith Screen",
-          style: Theme.of(context).textTheme.headlineMedium,
-        )),
-        Center(
-            child: Text(
           "Azhkar Screen",
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.titleLarge,
         )),
         Center(
             child: Text(
           "Bookmark Screen",
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.titleLarge,
         )),
       ];
   List<BottomNavigationBarItem> items() => [
