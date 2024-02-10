@@ -128,9 +128,20 @@ abstract class Styles {
     fontFamily: AppString.poppinsFont,
   );
   //----------------------------------------------------------------
-   static TextStyle getStartedBtnTextStyle = TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-            color: AppColors.kWitheColor,
-            fontFamily: AppString.poppinsFont);
+  static TextStyle getStartedBtnTextStyle = TextStyle(
+      fontSize: 18.sp,
+      fontWeight: FontWeight.w600,
+      color: AppColors.kWitheColor,
+      fontFamily: AppString.poppinsFont);
+
+  static Decoration decorationBottomNavbar = BoxDecoration(
+    boxShadow: [
+      BoxShadow(
+        offset: const Offset(0, -4),
+        spreadRadius: 0,
+        blurRadius: 16,
+        color: const Color(0xffBAB0CE).withOpacity(0.2),
+      )
+    ],
+  );
 }

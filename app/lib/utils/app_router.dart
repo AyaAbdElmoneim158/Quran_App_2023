@@ -1,4 +1,4 @@
-import 'package:app/not_found_page.dart';
+import 'package:app/views/not_found_page.dart';
 import 'package:app/views/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
