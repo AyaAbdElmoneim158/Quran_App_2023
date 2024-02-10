@@ -180,16 +180,16 @@ abstract class Styles {
             fontFamily: AppString.poppinsFont,
           );
 
-  static TextStyle? ayahNo1TextStyle = const TextStyle(
+  static TextStyle? ayahNo1TextStyle = TextStyle(
     fontWeight: FontWeight.w400,
-    fontSize: 14,
+    fontSize: 14.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle? alFatiahTextStyle = const TextStyle(
+  static TextStyle? alFatiahTextStyle = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 18,
+    fontSize: 18.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
@@ -209,16 +209,16 @@ abstract class Styles {
     ],
   );
 
-  static TextStyle? asslamualaikumTextStyle = const TextStyle(
+  static TextStyle? asslamualaikumTextStyle = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 18,
+    fontSize: 18.sp,
     color: AppColors.kTextMediumColor,
     fontFamily: AppString.poppinsFont,
   );
 
   static TextStyle? ayetArTextStyle(context) =>
       Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontSize: 18,
+            fontSize: 18.sp,
             fontWeight: FontWeight.bold,
             fontFamily: AppString.amiriFont,
           );
@@ -228,30 +228,30 @@ abstract class Styles {
             fontFamily: AppString.poppinsFont,
           );
 
-  static TextStyle? indexTextStyle = const TextStyle(
+  static TextStyle? indexTextStyle = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 14,
+    fontSize: 14.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle? nameTranslationTextStyle = const TextStyle(
+  static TextStyle? nameTranslationTextStyle = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 26,
+    fontSize: 26.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle? nameEnTextStyle = const TextStyle(
+  static TextStyle? nameEnTextStyle = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 16,
+    fontSize: 16.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle? versesTextStyle = const TextStyle(
+  static TextStyle? versesTextStyle = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 12,
+    fontSize: 12.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );

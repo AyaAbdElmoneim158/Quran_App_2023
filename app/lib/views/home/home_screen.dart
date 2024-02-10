@@ -1,14 +1,12 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/constance.dart';
-import 'package:app/utils/styles.dart';
-import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
-import 'package:app/views/bottom_navbar/widgets/custom_drawer.dart';
 import 'package:app/views/home/cubit/home_cubit.dart';
+import 'package:app/views/home/widgets/build_action.dart';
+import 'package:app/views/home/widgets/build_intro_text.dart';
+import 'package:app/views/home/widgets/build_title.dart';
+import 'package:app/views/home/widgets/list_view_of_surah.dart';
 import 'package:app/views/home/widgets/quran_card.dart';
-import 'package:app/views/home/widgets/surah_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,6 +18,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       key: context.read<HomeCubit>().homeScaffoldKey,
       appBar: AppBar(
+        title: const BuildTitle(),
+        actions: const [BuildAction()],
         elevation: 0,
         leading: IconButton(
           onPressed: () => context
@@ -30,23 +30,14 @@ class HomeScreen extends StatelessWidget {
           icon: Image.asset(ImageAssets.menuIcon),
         ),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            CustomDrawer(
-              isDarkMode: context.read<BottomNavbarCubit>().theme,
-              onTap: () => context.read<BottomNavbarCubit>().switchTheme(),
-            ),
-          ],
-        ),
-      ),
+      drawer: buildCustomDrawer(context),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(Constance.padding16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildIntroText(context),
+              buildIntroText(context),
               quranCard(),
               const SizedBox(height: 24),
               const ListViewOfSurah(),
@@ -56,68 +47,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class ListViewOfSurah extends StatelessWidget {
-  const ListViewOfSurah({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        var cubit = HomeCubit.get(context);
-        return (state is FetchSurahDataListLoading)
-            ? buildLoading(context)
-            // : (cubit.searchedList.isEmpty)
-            //     ? buildEmptyList(context)
-            : (state is FetchSurahDataListSuccess)
-                ? ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 16),
-                    itemCount: cubit.searchedList.length,
-                    itemBuilder: (context, index) => index % 2 == 0
-                        ? FadeInLeftBig(
-                            duration: const Duration(milliseconds: 1200),
-                            child: SurahCard(
-                              index: index,
-                              surah: cubit.searchedList[index],
-                            ),
-                          )
-                        : FadeInRightBig(
-                            duration: const Duration(milliseconds: 1200),
-                            child: SurahCard(
-                              index: index,
-                              surah: cubit.searchedList[index],
-                            ),
-                          ),
-                  )
-                : (state is FetchSurahDataListError)
-                    ? buildErrorFetchList(context)
-                    : Container();
-      },
-    );
-  }
-}
-
-Widget _buildIntroText(context) {
-  return FadeInLeft(
-    duration: const Duration(milliseconds: 800),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          AppString.asslamualaikum,
-          style: Styles.asslamualaikumTextStyle,
-        ),
-        const SizedBox(height: 4),
-        Text(
-          AppString.tanvirAhassan,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-      ],
-    ),
-  );
 }

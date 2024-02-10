@@ -1,7 +1,10 @@
 import 'package:app/utils/app_color.dart';
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
+import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
+import 'package:app/views/bottom_navbar/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BuildGeneralCard extends StatelessWidget {
   const BuildGeneralCard(
@@ -104,6 +107,19 @@ SizedBox buildErrorFetchList(BuildContext context) {
           ),
         ],
       ),
+    ),
+  );
+}
+
+Drawer buildCustomDrawer(BuildContext context) {
+  return Drawer(
+    child: Column(
+      children: [
+        CustomDrawer(
+          isDarkMode: context.read<BottomNavbarCubit>().theme,
+          onTap: () => context.read<BottomNavbarCubit>().switchTheme(),
+        ),
+      ],
     ),
   );
 }

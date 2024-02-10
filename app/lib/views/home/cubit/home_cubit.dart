@@ -35,4 +35,55 @@ class HomeCubit extends Cubit<HomeState> {
     }
     debugPrint('len SuraList : ${surahList.length}');
   }
+
+  final TextEditingController searchedTextEditingController =
+      TextEditingController();
+  bool isSearch = false;
+
+  changeSearched() {
+    isSearch = !isSearch;
+    debugPrint("IsSearch: $isSearch");
+  }
+
+  void runFilter(String value) {
+    List<SurahModel> results = [];
+    if (value.isEmpty || searchedTextEditingController.text.isEmpty) {
+      results = surahList;
+    } else {
+      results = surahList
+          .where(
+            (surah) =>
+                surah.nameTranslation
+                    .toLowerCase()
+                    .contains(value.toLowerCase()) ||
+                surah.name.toLowerCase().contains(
+                      value.toLowerCase(),
+                    ),
+          )
+          .toList();
+    }
+    searchedList = results;
+    emit(RunSearchedState());
+  }
+
+  void startSearched(context) {
+    ModalRoute.of(context)
+        ?.addLocalHistoryEntry(LocalHistoryEntry(onRemove: stopSearched));
+    isSearch = true;
+    debugPrint('search');
+    emit(StartSearchedState());
+  }
+
+  void stopSearched() {
+    clearSearched();
+    isSearch = false;
+    searchedList = surahList;
+    emit(StopSearchedState());
+  }
+
+  void clearSearched() {
+    searchedTextEditingController.clear();
+    searchedList = surahList;
+    emit(ClearSearchedState());
+  }
 }

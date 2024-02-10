@@ -13,3 +13,11 @@ final class FetchSurahDataListError extends HomeState {
   final String error;
   FetchSurahDataListError(this.error);
 }
+
+final class ClearSearchedState extends HomeState {}
+
+final class StopSearchedState extends HomeState {}
+
+final class StartSearchedState extends HomeState {}
+
+final class RunSearchedState extends HomeState {}
