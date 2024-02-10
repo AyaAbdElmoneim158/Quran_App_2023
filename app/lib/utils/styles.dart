@@ -215,4 +215,44 @@ abstract class Styles {
     color: AppColors.kTextMediumColor,
     fontFamily: AppString.poppinsFont,
   );
+
+  static TextStyle? ayetArTextStyle(context) =>
+      Theme.of(context).textTheme.bodyLarge!.copyWith(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            fontFamily: AppString.amiriFont,
+          );
+  static TextStyle? ayetEnTextStyle(context) =>
+      Theme.of(context).textTheme.bodyLarge!.copyWith(
+            color: AppColors.kTextDarkColor,
+            fontFamily: AppString.poppinsFont,
+          );
+
+  static TextStyle? indexTextStyle = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.poppinsFont,
+  );
+
+  static TextStyle? nameTranslationTextStyle = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 26,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.poppinsFont,
+  );
+
+  static TextStyle? nameEnTextStyle = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.poppinsFont,
+  );
+
+  static TextStyle? versesTextStyle = const TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 12,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.poppinsFont,
+  );
 }
