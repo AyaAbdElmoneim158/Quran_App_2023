@@ -5,6 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class Styles {
+  // DrawerTheme --------------------------------------------------------
+  static const drawerLightTheme = DrawerThemeData(
+    backgroundColor: AppColors.kWitheColor,
+  );
+  static const drawerDarkTheme = DrawerThemeData(
+    backgroundColor: AppColors.kbgDarkColor,
+  );
   // BottomNavigationBarTheme --------------------------------------------------------
   static const bottomNavigationBarThemeLight = BottomNavigationBarThemeData(
     backgroundColor: AppColors.kWitheColor,
@@ -15,113 +22,113 @@ abstract class Styles {
     type: BottomNavigationBarType.fixed,
   );
   // AppBarTheme --------------------------------------------------------
-  static const appBarThemeLight = AppBarTheme(
+  static AppBarTheme appBarThemeLight = AppBarTheme(
     elevation: 0,
     backgroundColor: AppColors.kWitheColor,
     titleTextStyle: TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 20,
+      fontSize: 20.sp,
       color: AppColors.kPurpleD3Color,
     ),
-    systemOverlayStyle: SystemUiOverlayStyle(
+    systemOverlayStyle: const SystemUiOverlayStyle(
       statusBarColor: AppColors.kWitheColor,
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.light,
     ),
   );
 
-  static const appBarThemeDart = AppBarTheme(
+  static AppBarTheme appBarThemeDart = AppBarTheme(
     elevation: 0,
     backgroundColor: AppColors.kbgDarkColor,
     titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
-        fontSize: 20,
+        fontSize: 20.sp,
         color: AppColors.kWitheColor),
-    systemOverlayStyle: SystemUiOverlayStyle(
+    systemOverlayStyle: const SystemUiOverlayStyle(
       statusBarColor: AppColors.kbgDarkColor,
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.dark,
     ),
   );
-  // TextStyleLight --------------------------------------------------------
-  static TextStyle titleLargeStyleLight = TextStyle(
+  // TextLightStyle --------------------------------------------------------
+  static TextStyle titleLargeLightStyle = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: 24.sp,
     color: AppColors.kPurpleD6Color,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle titleMediumStyleLight = TextStyle(
+  static TextStyle titleMediumLightStyle = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20.sp,
     color: AppColors.kPurpleD3Color,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle bodySmallStyleLight = TextStyle(
+  static TextStyle bodySmallLightStyle = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 14.sp,
     color: AppColors.kPurpleD6Color,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle bodyMediumStyleLight = TextStyle(
+  static TextStyle bodyMediumLightStyle = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: 12.sp,
     color: AppColors.kTextMediumColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle bodyLargeStyleLight = TextStyle(
+  static TextStyle bodyLargeLightStyle = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 16.sp,
     color: AppColors.kPurpleD6Color,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle labelLargeStyleLight = TextStyle(
+  static TextStyle labelLargeLightStyle = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20.sp,
     color: AppColors.kPurpleD2Color,
     fontFamily: AppString.poppinsFont,
   );
-  // TextStyleDark --------------------------------------------------------
-  static TextStyle titleLargeStyleDark = TextStyle(
+  // TextDarkStyle --------------------------------------------------------
+  static TextStyle titleLargeDarkStyle = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: 24.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle titleMediumStyleDark = TextStyle(
+  static TextStyle titleMediumDarkStyle = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle bodySmallStyleDark = TextStyle(
+  static TextStyle bodySmallDarkStyle = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 14.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle bodyMediumStyleDark = TextStyle(
+  static TextStyle bodyMediumDarkStyle = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: 12.sp,
     color: AppColors.kTextDarkColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle bodyLargeStyleDark = TextStyle(
+  static TextStyle bodyLargeDarkStyle = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 16.sp,
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
 
-  static TextStyle labelLargeStyleDark = TextStyle(
+  static TextStyle labelLargeDarkStyle = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20.sp,
     color: AppColors.kWitheColor,
@@ -144,4 +151,32 @@ abstract class Styles {
       )
     ],
   );
+
+  static TextStyle? drawerQuranTextStyle() => TextStyle(
+        fontWeight: FontWeight.w600,
+        fontSize: 32.sp,
+        color: AppColors.kWitheColor,
+        fontFamily: AppString.poppinsFont,
+      );
+
+  static TextStyle? drawerQuranDescTextStyle(context) =>
+      Theme.of(context).textTheme.bodyMedium!.copyWith(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            color: AppColors.kbgDark2Color,
+            fontFamily: AppString.poppinsFont,
+          );
+
+  static TextStyle? splashDecTextStyle(context) =>
+      Theme.of(context).textTheme.bodyMedium!.copyWith(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w400,
+            fontFamily: AppString.poppinsFont,
+          );
+
+  static TextStyle? splashAppNameTextStyle(context) =>
+      Theme.of(context).textTheme.titleMedium!.copyWith(
+            fontSize: 28.sp,
+            fontFamily: AppString.poppinsFont,
+          );
 }

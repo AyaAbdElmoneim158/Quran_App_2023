@@ -11,4 +11,7 @@ abstract class AppString {
   static const String bottomNavigationBarItemPrayerText = "Prayer";
   static const String bottomNavigationBarItemPrayText = "Pray";
   static const String bottomNavigationBarItemBookmarkText = "Bookmark";
+
+  static const String darkMode = "Dark mode";
+  static const String lightMode = "Light mode";
 }

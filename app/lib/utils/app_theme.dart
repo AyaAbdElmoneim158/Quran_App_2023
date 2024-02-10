@@ -8,13 +8,14 @@ abstract class AppTheme {
         appBarTheme: Styles.appBarThemeLight,
         bottomNavigationBarTheme: Styles.bottomNavigationBarThemeLight,
         dialogBackgroundColor: AppColors.kWitheColor,
-        textTheme:  TextTheme(
-          titleLarge: Styles.titleLargeStyleLight,
-          titleMedium: Styles.titleMediumStyleLight,
-          bodySmall: Styles.bodySmallStyleLight,
-          bodyMedium: Styles.bodyMediumStyleLight,
-          bodyLarge: Styles.bodyLargeStyleLight,
-          labelLarge: Styles.labelLargeStyleLight,
+        drawerTheme: Styles.drawerLightTheme,
+        textTheme: TextTheme(
+          titleLarge: Styles.titleLargeLightStyle,
+          titleMedium: Styles.titleMediumLightStyle,
+          bodySmall: Styles.bodySmallLightStyle,
+          bodyMedium: Styles.bodyMediumLightStyle,
+          bodyLarge: Styles.bodyLargeLightStyle,
+          labelLarge: Styles.labelLargeLightStyle,
         ),
       );
   static ThemeData darkTheme() => ThemeData.dark().copyWith(
@@ -22,13 +23,14 @@ abstract class AppTheme {
         appBarTheme: Styles.appBarThemeDart,
         dialogBackgroundColor: AppColors.kbgDarkColor,
         bottomNavigationBarTheme: Styles.bottomNavigationBarThemeDart,
-        textTheme:  TextTheme(
-          titleLarge: Styles.titleLargeStyleDark,
-          titleMedium: Styles.titleMediumStyleDark,
-          bodySmall: Styles.bodySmallStyleDark,
-          bodyMedium: Styles.bodyMediumStyleDark,
-          bodyLarge: Styles.bodyLargeStyleDark,
-          labelLarge: Styles.labelLargeStyleDark,
+        drawerTheme: Styles.drawerDarkTheme,
+        textTheme: TextTheme(
+          titleLarge: Styles.titleLargeDarkStyle,
+          titleMedium: Styles.titleMediumDarkStyle,
+          bodySmall: Styles.bodySmallDarkStyle,
+          bodyMedium: Styles.bodyMediumDarkStyle,
+          bodyLarge: Styles.bodyLargeDarkStyle,
+          labelLarge: Styles.labelLargeDarkStyle,
         ),
       );
 }
