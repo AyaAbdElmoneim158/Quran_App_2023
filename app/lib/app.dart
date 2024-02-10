@@ -23,7 +23,7 @@ class QuranApp extends StatelessWidget {
             create: (BuildContext context) => BottomNavbarCubit(),
           ),
           BlocProvider<HomeCubit>(
-            create: (BuildContext context) => HomeCubit()..fetchSurahies(),
+            create: (BuildContext context) => HomeCubit()..fetchSurahDataList(),
           ),
         ],
         child: GetMaterialApp(

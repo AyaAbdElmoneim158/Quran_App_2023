@@ -1,5 +1,6 @@
 const String imagePath = 'assets/images';
 const String iconPath = 'assets/icons';
+const String jsonPath = 'assets/jsons';
 
 abstract class ImageAssets {
   //Icons ----------------------------------------------------------------------
@@ -35,4 +36,7 @@ abstract class ImageAssets {
   static const String loading1Image = '$imagePath/loading_1.gif';
   static const String loading2Image = '$imagePath/loading_2.gif'; //
   static const String warningImage = '$imagePath/warning.png';
+
+  //Jsons ---------------------------------------------------------------------
+  static const String quranJson = '$jsonPath/quran.json';
 }

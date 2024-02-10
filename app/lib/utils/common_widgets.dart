@@ -1,4 +1,5 @@
 import 'package:app/utils/app_color.dart';
+import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -48,5 +49,61 @@ Divider buildCustomDivider() {
     height: 1,
     color: AppColors.kTextLight2Color.withOpacity(0.35),
     thickness: 1,
+  );
+}
+
+SizedBox buildLoading(BuildContext context) {
+  return SizedBox(
+    height: MediaQuery.of(context).size.height * 0.5,
+    child: Center(
+      child: Image.asset(
+        ImageAssets.loading1Image,
+        height: 150,
+      ),
+    ),
+  );
+}
+
+SizedBox buildEmptyList(BuildContext context) {
+  return SizedBox(
+    height: MediaQuery.of(context).size.height * 0.5,
+    child: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            ImageAssets.search2Icon,
+            height: 130,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            AppString.emptyList,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+SizedBox buildErrorFetchList(BuildContext context) {
+  return SizedBox(
+    height: MediaQuery.of(context).size.height * 0.5,
+    child: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            ImageAssets.warningImage,
+            height: 130,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            AppString.errorList,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ],
+      ),
+    ),
   );
 }

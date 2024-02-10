@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
+import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/constance.dart';
 import 'package:app/utils/styles.dart';
 import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
@@ -66,59 +67,35 @@ class ListViewOfSurah extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
-        return (state is LoadingSurahies)
-            ? SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5,
-                child: Center(
-                  child: Image.asset(
-                    ImageAssets.loading1Image,
-                    height: 150,
-                  ),
-                ),
-              )
-            : cubit.surahies.isEmpty
-                ? SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            ImageAssets.search2Icon,
-                            height: 130,
+        return (state is FetchSurahDataListLoading)
+            ? buildLoading(context)
+            // : (cubit.searchedList.isEmpty)
+            //     ? buildEmptyList(context)
+            : (state is FetchSurahDataListSuccess)
+                ? ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16),
+                    itemCount: cubit.searchedList.length,
+                    itemBuilder: (context, index) => index % 2 == 0
+                        ? FadeInLeftBig(
+                            duration: const Duration(milliseconds: 1200),
+                            child: SurahCard(
+                              index: index,
+                              surah: cubit.searchedList[index],
+                            ),
+                          )
+                        : FadeInRightBig(
+                            duration: const Duration(milliseconds: 1200),
+                            child: SurahCard(
+                              index: index,
+                              surah: cubit.searchedList[index],
+                            ),
                           ),
-                          const SizedBox(height: 8),
-                          Text(
-                            AppString.emptyList,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        ],
-                      ),
-                    ),
                   )
-                : state is FetchIngSurahies
-                    ? ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        separatorBuilder: (context, index) =>
-                            const SizedBox(height: 16),
-                        itemCount: cubit.surahies.length,
-                        itemBuilder: (context, index) => index % 2 == 0
-                            ? FadeInLeftBig(
-                                duration: const Duration(milliseconds: 1200),
-                                child: SurahCard(
-                                  index: index,
-                                  surah: cubit.surahies[index],
-                                ),
-                              )
-                            : FadeInRightBig(
-                                duration: const Duration(milliseconds: 1200),
-                                child: SurahCard(
-                                  index: index,
-                                  surah: cubit.surahies[index],
-                                ),
-                              ),
-                      )
+                : (state is FetchSurahDataListError)
+                    ? buildErrorFetchList(context)
                     : Container();
       },
     );

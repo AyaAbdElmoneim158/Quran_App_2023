@@ -20,5 +20,6 @@ abstract class AppString {
   static const String lastRead = "Last Read";
   static const String asslamualaikum = "Asslamualaikum";
   static const String tanvirAhassan = "Tanvir Ahassan";
- static const String emptyList =   "List is Empty";
+  static const String emptyList = "List is Empty";
+  static const String errorList = "Some error happened!";
 }
