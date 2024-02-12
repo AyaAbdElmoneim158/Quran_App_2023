@@ -1,5 +1,6 @@
 import 'package:app/utils/app_router.dart';
 import 'package:app/utils/app_theme.dart';
+import 'package:app/views/bookmark/cubit/bookmark_cubit.dart';
 import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
 import 'package:app/views/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,9 @@ class QuranApp extends StatelessWidget {
           ),
           BlocProvider<HomeCubit>(
             create: (BuildContext context) => HomeCubit()..fetchSurahDataList(),
+          ),
+          BlocProvider<BookmarkCubit>(
+            create: (BuildContext context) => BookmarkCubit()..getBookmarks(),
           ),
         ],
         child: GetMaterialApp(

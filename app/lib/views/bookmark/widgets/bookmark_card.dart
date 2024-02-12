@@ -1,0 +1,47 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:app/utils/common_widgets.dart';
+import 'package:app/utils/styles.dart';
+import 'package:app/views/bookmark/model/bookmark_model.dart';
+import 'package:app/views/home/widgets/surah_header_icons.dart';
+import 'package:flutter/material.dart';
+
+class BookmarkCard extends StatelessWidget {
+  final BookmarkModel model;
+  final int index;
+
+  const BookmarkCard({
+    Key? key,
+    required this.model,
+    required this.index,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SurahHeaderIcons(
+          index: index,
+          bookmarkModel: BookmarkModel(
+            text: model.text,
+            type: 'surah',
+            audio: model.audio,
+          ),
+        ),
+        const SizedBox(height: 24),
+        Directionality(
+          textDirection: TextDirection.rtl,
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              model.text,
+              style: Styles.ayetArTextStyle(context),
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+        buildCustomDivider(),
+      ],
+    );
+  }
+}
+// app/assets/audios/quran_audio/001/001.mp3

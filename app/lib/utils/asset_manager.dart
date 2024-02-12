@@ -27,6 +27,7 @@ abstract class ImageAssets {
   static const String searchIcon = '$iconPath/search.png';
   static const String shareIcon = '$iconPath/share.png';
   static const String starIcon = '$iconPath/star.png';
+  static const String folderIcon = '$iconPath/folder.png';
 
   //Images ---------------------------------------------------------------------
   static const String allahNameImage = '$imagePath/allahName.png';
