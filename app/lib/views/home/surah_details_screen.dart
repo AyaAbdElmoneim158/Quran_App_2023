@@ -5,6 +5,7 @@ import 'package:app/views/home/widgets/surah_info_card.dart';
 import 'package:app/views/home/widgets/verse_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:animate_do/animate_do.dart';
 
 class SurahDetailsScreen extends StatelessWidget {
   const SurahDetailsScreen({super.key, required this.surah});
@@ -25,7 +26,9 @@ class SurahDetailsScreen extends StatelessWidget {
           padding: EdgeInsets.all(Constance.padding16),
           child: Column(
             children: [
-              buildSurahInfoCard(surah),
+              ZoomIn(
+                  duration: const Duration(milliseconds: 700),
+                  child: buildSurahInfoCard(surah)),
               const SizedBox(height: 24),
               ListView.separated(
                 shrinkWrap: true,
@@ -33,8 +36,15 @@ class SurahDetailsScreen extends StatelessWidget {
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 16),
                 itemCount: surah.array.length,
-                itemBuilder: (context, index) =>
-                    VerseCard(surah: surah, index: index),
+                itemBuilder: (context, index) => (index % 2 == 0)
+                    ? FadeInLeftBig(
+                        duration: const Duration(milliseconds: 1200),
+                        child: VerseCard(surah: surah, index: index),
+                      )
+                    : FadeInRightBig(
+                        duration: const Duration(milliseconds: 1200),
+                        child: VerseCard(surah: surah, index: index),
+                      ),
               ),
             ],
           ),

@@ -1,7 +1,7 @@
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/constance.dart';
-import 'package:app/views/home/cubit/home_cubit.dart';
+import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
 import 'package:app/views/home/widgets/build_action.dart';
 import 'package:app/views/home/widgets/build_intro_text.dart';
 import 'package:app/views/home/widgets/build_title.dart';
@@ -16,15 +16,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: context.read<HomeCubit>().homeScaffoldKey,
+      key: context.read<BottomNavbarCubit>().scaffoldKey,
       appBar: AppBar(
         title: const BuildTitle(),
         actions: const [BuildAction()],
         elevation: 0,
         leading: IconButton(
           onPressed: () => context
-              .read<HomeCubit>()
-              .homeScaffoldKey
+              .read<BottomNavbarCubit>()
+              .scaffoldKey
               .currentState!
               .openDrawer(),
           icon: Image.asset(ImageAssets.menuIcon),

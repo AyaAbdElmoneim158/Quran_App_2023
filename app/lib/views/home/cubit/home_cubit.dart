@@ -1,16 +1,21 @@
+import 'dart:async';
+import 'package:app/helper/audioplayers_helper.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/home/model/surah_model.dart';
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
+
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   static HomeCubit get(context) => BlocProvider.of(context);
-  final GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();
+
   List _items = [];
   List<dynamic> searchedList = [];
   List<SurahModel> surahList = [];
@@ -85,5 +90,25 @@ class HomeCubit extends Cubit<HomeState> {
     searchedTextEditingController.clear();
     searchedList = surahList;
     emit(ClearSearchedState());
+  }
+
+  Future<void> shareAyet(String ayet) async {
+    return await Share.shareFiles(
+      ['assets/images/quran_splash.png'],
+      text: ayet,
+    );
+  }
+
+  Duration audioDuration = Duration.zero;
+  bool isPlay = false;
+
+  Future<void> playAudio({required String path}) async {
+    // audioDuration = Duration.zero;
+    await AudioplayersHelper.play(path: path);
+    audioDuration = (await AudioplayersHelper.getDuration(path: path))!;
+    isPlay = true;
+    Timer(audioDuration, () {
+      isPlay = false;
+    });
   }
 }

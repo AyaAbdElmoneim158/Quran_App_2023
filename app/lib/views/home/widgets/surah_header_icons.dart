@@ -1,16 +1,30 @@
+import 'dart:async';
+
 import 'package:app/utils/app_color.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/styles.dart';
+import 'package:app/views/bookmark/cubit/bookmark_cubit.dart';
+import 'package:app/views/home/cubit/home_cubit.dart';
+import 'package:app/views/bookmark/model/bookmark_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SurahHeaderIcons extends StatelessWidget {
+class SurahHeaderIcons extends StatefulWidget {
   const SurahHeaderIcons({
     super.key,
     required this.index,
+    required this.bookmarkModel,
   });
 
   final int index;
+  final BookmarkModel bookmarkModel;
 
+  @override
+  State<SurahHeaderIcons> createState() => _SurahHeaderIconsState();
+}
+
+class _SurahHeaderIconsState extends State<SurahHeaderIcons> {
+  bool isPlay = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +40,7 @@ class SurahHeaderIcons extends StatelessWidget {
             radius: 13.5,
             backgroundColor: AppColors.kPurpleD2Color,
             child: Text(
-              "${index + 1}",
+              "${widget.index + 1}",
               style: Styles.indexTextStyle,
             ),
           ),
@@ -35,15 +49,25 @@ class SurahHeaderIcons extends StatelessWidget {
               GestureDetector(
                 onTap: () async {
                   debugPrint("Share");
+                  context.read<HomeCubit>().shareAyet('ayet');
                 },
                 child: Image.asset(ImageAssets.shareIcon),
               ),
               const SizedBox(width: 8),
               GestureDetector(
                 onTap: () async {
-                  debugPrint("Play");
+                  await context
+                      .read<HomeCubit>()
+                      .playAudio(path: widget.bookmarkModel.audio);
+                  // debugPrint("${context.read<HomeCubit>().isPlay}");
+                  isPlay = true;
+                  setState(() {});
+                  Timer(context.read<HomeCubit>().audioDuration, () {
+                    isPlay = false;
+                    setState(() {});
+                  });
                 },
-                child: false
+                child: isPlay
                     ? Image.asset(ImageAssets.playFillIcon)
                     : Image.asset(ImageAssets.playOutlineIcon),
               ),
@@ -51,8 +75,14 @@ class SurahHeaderIcons extends StatelessWidget {
               GestureDetector(
                 onTap: () async {
                   debugPrint("Add");
+                  context
+                      .read<BookmarkCubit>()
+                      .addBookmark(widget.bookmarkModel);
+                  context.read<BookmarkCubit>().getBookmarks();
                 },
-                child: false
+                child: context
+                        .watch<BookmarkCubit>()
+                        .isBookmarked(widget.bookmarkModel.text)
                     ? Image.asset(ImageAssets.bookmarkFillIcon)
                     : Image.asset(ImageAssets.bookmarkOutlineIcon),
               )
