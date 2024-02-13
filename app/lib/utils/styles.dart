@@ -255,4 +255,14 @@ abstract class Styles {
     color: AppColors.kWitheColor,
     fontFamily: AppString.poppinsFont,
   );
+  static Decoration? decorationDismissibleCard = const BoxDecoration(
+    gradient: LinearGradient(
+      colors: [
+        Color(0xffff0844),
+        Color(0xffffb199),
+      ], // You can adjust the gradient colors
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    ),
+  );
 }

@@ -13,12 +13,12 @@ class BookmarkCubit extends Cubit<BookmarkState> {
   List<BookmarkModel> hadithBookmarks = [];
   List<BookmarkModel> zhkarBookmarks = [];
 
-  List<BookmarkModel> bookmarks = BookmarkModel.dummyBookmarks;
+  List<BookmarkModel> bookmarks = []; //BookmarkModel.dummyBookmarks;
   // Retrieve all bookmarks from the Hive box
   Future<void> getBookmarks() async {
     try {
       final box = await Hive.openBox<BookmarkModel>(_boxName);
-      //! bookmarks = box.values.toList();
+      bookmarks = box.values.toList();
       filterSurahBookmarks();
       emit(BookmarkLoadSuccessState()); //)
     } catch (e) {
@@ -32,8 +32,9 @@ class BookmarkCubit extends Cubit<BookmarkState> {
       final box = await Hive.openBox<BookmarkModel>(_boxName);
       if (!isBookmarked(bookmark.text)) {
         await box.add(bookmark);
+        await getBookmarks();
       }
-
+//! Todo:- Delete by bookmark.text-------------------------------------------
       emit(BookmarkLoadSuccessState());
     } catch (e) {
       emit(BookmarkErrorState(message: 'Failed to add bookmark'));
@@ -56,6 +57,7 @@ class BookmarkCubit extends Cubit<BookmarkState> {
     try {
       final box = await Hive.openBox<BookmarkModel>(_boxName);
       await box.deleteAt(index);
+      await getBookmarks();
       emit(BookmarkLoadSuccessState());
     } catch (e) {
       emit(BookmarkErrorState(message: 'Failed to delete bookmark'));

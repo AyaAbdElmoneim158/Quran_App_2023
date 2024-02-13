@@ -20,9 +20,13 @@ class VerseCard extends StatelessWidget {
     return Column(
       children: [
         SurahHeaderIcons(
-            index: index,
-            bookmarkModel:
-                BookmarkModel(text: "text", type: "type", audio: "audio")),
+          index: index,
+          bookmarkModel: BookmarkModel(
+            text: surah.array[index].ar,
+            type: "surah",
+            audio: surah.array[index].path,
+          ),
+        ),
         const SizedBox(height: 24),
         Directionality(
           textDirection: TextDirection.rtl,

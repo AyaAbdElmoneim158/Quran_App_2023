@@ -46,6 +46,7 @@ class _SurahHeaderIconsState extends State<SurahHeaderIcons> {
           ),
           Row(
             children: [
+//! Share ----------------------------------------------------------------------------------------------------------------------------
               GestureDetector(
                 onTap: () async {
                   debugPrint("Share");
@@ -54,6 +55,7 @@ class _SurahHeaderIconsState extends State<SurahHeaderIcons> {
                 child: Image.asset(ImageAssets.shareIcon),
               ),
               const SizedBox(width: 8),
+//! Play ----------------------------------------------------------------------------------------------------------------------------
               GestureDetector(
                 onTap: () async {
                   await context
@@ -72,13 +74,12 @@ class _SurahHeaderIconsState extends State<SurahHeaderIcons> {
                     : Image.asset(ImageAssets.playOutlineIcon),
               ),
               const SizedBox(width: 8),
+//! Add ----------------------------------------------------------------------------------------------------------------------------
               GestureDetector(
                 onTap: () async {
+                  var bookmarkCubit = context.read<BookmarkCubit>();
                   debugPrint("Add");
-                  context
-                      .read<BookmarkCubit>()
-                      .addBookmark(widget.bookmarkModel);
-                  context.read<BookmarkCubit>().getBookmarks();
+                  bookmarkCubit.addBookmark(widget.bookmarkModel);
                 },
                 child: context
                         .watch<BookmarkCubit>()

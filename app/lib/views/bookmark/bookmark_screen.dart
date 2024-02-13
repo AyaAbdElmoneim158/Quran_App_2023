@@ -38,14 +38,14 @@ class BookmarkScreen extends StatelessWidget {
               ),
               // actions: const [BuildAction()],
               elevation: 0,
-              leading: IconButton(
-                onPressed: () => context
-                    .read<BottomNavbarCubit>()
-                    .scaffoldKey
-                    .currentState!
-                    .openDrawer(),
-                icon: Image.asset(ImageAssets.menuIcon),
-              ),
+              // leading: IconButton(
+              //   onPressed: () => context
+              //       .read<BottomNavbarCubit>()
+              //       .scaffoldKey
+              //       .currentState!
+              //       .openDrawer(),
+              //   icon: Image.asset(ImageAssets.menuIcon),
+              // ),
             ),
             drawer: buildCustomDrawer(context),
             body: Padding(
@@ -73,7 +73,7 @@ class BookmarkScreen extends StatelessWidget {
       onTap: () {
         Get.to(BookmarkDetailsScreen(
           type: folderName,
-          bookmarks: bookmarks,
+          // bookmarks: bookmarks,
         ));
         debugPrint("Pushing to BookmarkDetailsScreen");
       },
@@ -93,7 +93,7 @@ class BookmarkScreen extends StatelessWidget {
                         .copyWith(fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    "${bookmarks.length} Items}",
+                    "${bookmarks.length} Items",
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!

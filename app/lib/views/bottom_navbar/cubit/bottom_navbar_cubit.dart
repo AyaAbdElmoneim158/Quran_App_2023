@@ -1,7 +1,6 @@
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/bookmark/bookmark_screen.dart';
-import 'package:app/views/bookmark/cubit/bookmark_cubit.dart';
 import 'package:app/views/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,14 +15,8 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
   final GetStorage _box = GetStorage();
   final _key = "isDark";
 
-  int currentIndex = 3;
+  int currentIndex = 0;
   List<Widget> screens(context) => [
-        /* Center(
-            child: Text(
-          "Home Screen",
-          style: Theme.of(context).textTheme.titleLarge,
-        )),*/
-
         const HomeScreen(),
         Center(
             child: Text(
@@ -35,11 +28,6 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
           "Azhkar Screen",
           style: Theme.of(context).textTheme.titleLarge,
         )),
-        // Center(
-        //     child: Text(
-        //   "Bookmark Screen",
-        //   style: Theme.of(context).textTheme.titleLarge,
-        // )),
         const BookmarkScreen()
       ];
   List<BottomNavigationBarItem> items() => [
@@ -68,15 +56,10 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
           label: AppString.bottomNavigationBarItemPrayText,
         ),
         BottomNavigationBarItem(
-          icon: InkWell(
-            onTap: () {
-              BookmarkCubit().getBookmarks();
-            },
-            child: Image.asset(
-              (currentIndex == 3)
-                  ? ImageAssets.bookmarkPurpleIcon
-                  : ImageAssets.bookmarkGrayIcon,
-            ),
+          icon: Image.asset(
+            (currentIndex == 3)
+                ? ImageAssets.bookmarkPurpleIcon
+                : ImageAssets.bookmarkGrayIcon,
           ),
           label: AppString.bottomNavigationBarItemBookmarkText,
         ),
