@@ -81,6 +81,7 @@ class BookmarkCubit extends Cubit<BookmarkState> {
     try {
       final box = await Hive.openBox<BookmarkModel>('bookmarkBox');
       await box.clear();
+      await getBookmarks();
       emit(BookmarkLoadSuccessState());
     } catch (e) {
       emit(BookmarkErrorState(message: 'Failed to clear bookmarks'));

@@ -1,6 +1,6 @@
 const String imagePath = 'assets/images';
 const String iconPath = 'assets/icons';
-const String jsonPath = 'assets/jsons';
+const String jsonPath = 'jsons';
 
 abstract class ImageAssets {
   //Icons ----------------------------------------------------------------------
@@ -40,4 +40,13 @@ abstract class ImageAssets {
 
   //Jsons ---------------------------------------------------------------------
   static const String quranJson = '$jsonPath/quran.json';
+  static const String abiDaudJson = 'assets/jsons/abi_daud.json';
+  static const String ahmedJson = '$jsonPath/ahmed.json';
+  static const String bukhariJson = '$jsonPath/bukhari.json';
+  static const String darimiJson = '$jsonPath/darimi.json';
+  static const String ibnMajaJson = '$jsonPath/ibn-Maja.json';
+  static const String malikJson = '$jsonPath/malik.json';
+  static const String muslimJson = '$jsonPath/muslim.json';
+  static const String nasaiJson = '$jsonPath/nasai.json';
+  static const String trmiziJson = '$jsonPath/trmizi.json';
 }

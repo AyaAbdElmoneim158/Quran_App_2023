@@ -16,7 +16,6 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   static HomeCubit get(context) => BlocProvider.of(context);
 
-  List _items = [];
   List<dynamic> searchedList = [];
   List<SurahModel> surahList = [];
 
@@ -29,7 +28,7 @@ class HomeCubit extends Cubit<HomeState> {
       final String response =
           await rootBundle.loadString(ImageAssets.quranJson);
       var data = await json.decode(response);
-      _items = data;
+      List _items = data;
       surahList = _items.map((ele) => SurahModel.fromJson(ele)).toList();
       searchedList = surahList;
       debugPrint("Fetch SurahDataList Success : ${surahList.length}");

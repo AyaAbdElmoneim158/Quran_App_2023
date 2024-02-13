@@ -3,10 +3,11 @@ import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/styles.dart';
 import 'package:app/views/home/model/surah_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 BuildGeneralCard buildSurahInfoCard(SurahModel surah) {
   return BuildGeneralCard(
-    height: 265,
+    height: 265.h,
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 24),
       child: Column(

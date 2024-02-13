@@ -1,6 +1,8 @@
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/bookmark/bookmark_screen.dart';
+import 'package:app/views/hadith/hadith_screen.dart';
+
 import 'package:app/views/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,14 +17,10 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
   final GetStorage _box = GetStorage();
   final _key = "isDark";
 
-  int currentIndex = 0;
+  int currentIndex = 1;
   List<Widget> screens(context) => [
         const HomeScreen(),
-        Center(
-            child: Text(
-          "Hadith Screen",
-          style: Theme.of(context).textTheme.titleLarge,
-        )),
+        const HadithScreen(),
         Center(
             child: Text(
           "Azhkar Screen",

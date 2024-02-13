@@ -19,10 +19,11 @@ class BookmarkDetailsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BookmarkCubit, BookmarkState>(
       builder: (context, state) {
-        var cubit = BookmarkCubit.get(context)..getBookmarks();
-        List<BookmarkModel> bookmarks = (type == "surah")
+        var cubit = BookmarkCubit.get(context);
+        debugPrint("Type: $type");
+        List<BookmarkModel> bookmarks = (type == "Surah")
             ? cubit.surahBookmarks
-            : (type == "hadith")
+            : (type == "Hadith")
                 ? cubit.hadithBookmarks
                 : cubit.zhkarBookmarks;
         return Padding(

@@ -265,4 +265,22 @@ abstract class Styles {
       end: Alignment.centerRight,
     ),
   );
+  static TextStyle hadithTextStyle = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.poppinsFont,
+  );
+  static TextStyle hadithCategoryTextStyle = const TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 24,
+    color: AppColors.kWitheColor,
+    fontFamily: AppString.amiriFont,
+  );
+  static TextStyle hadithDetailsTextStyle = const TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+    fontFamily: AppString.amiriFont,
+    color: AppColors.kWitheColor,
+  );
 }
