@@ -22,11 +22,14 @@ BuildGeneralCard buildHadithDetailsCard(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            hadith.array[index].hadith,
-            maxLines: 7,
-            overflow: TextOverflow.ellipsis,
-            style: Styles.hadithDetailsTextStyle,
+          Directionality(
+            textDirection: TextDirection.rtl,
+            child: Text(
+              hadith.array[index].hadith,
+              maxLines: 7,
+              overflow: TextOverflow.ellipsis,
+              style: Styles.hadithDetailsTextStyle,
+            ),
           ),
           BlocBuilder<BookmarkCubit, BookmarkState>(
             builder: (context, state) {

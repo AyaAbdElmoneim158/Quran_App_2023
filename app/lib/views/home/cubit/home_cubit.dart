@@ -25,7 +25,6 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       emit(FetchSurahDataListLoading());
       var data = await ReadJson.readJson(ImageAssets.quranJson);
-
       List items = data;
       surahList = items.map((ele) => SurahModel.fromJson(ele)).toList();
       searchedList = surahList;

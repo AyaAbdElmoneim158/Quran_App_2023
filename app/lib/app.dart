@@ -1,5 +1,6 @@
 import 'package:app/utils/app_router.dart';
 import 'package:app/utils/app_theme.dart';
+import 'package:app/views/azhkar/cubit/azhkar_cubit.dart';
 import 'package:app/views/bookmark/cubit/bookmark_cubit.dart';
 import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
 import 'package:app/views/hadith/cubit/hadith_cubit.dart';
@@ -32,6 +33,10 @@ class QuranApp extends StatelessWidget {
           ),
           BlocProvider<HadithCubit>(
             create: (BuildContext context) => HadithCubit()..fetchHadiths(),
+          ),
+          BlocProvider<AzhkarCubit>(
+            create: (BuildContext context) =>
+                AzhkarCubit()..fetchAzhkarDataList(),
           ),
         ],
         child: GetMaterialApp(

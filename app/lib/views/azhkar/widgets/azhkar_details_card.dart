@@ -6,11 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-GestureDetector buildAzhkarDetailsCard(
-    int index, List<AzhkarModel> searchedList) {
+GestureDetector buildAzhkarDetailsCard(int index, AzhkarModel searchedList) {
   return GestureDetector(
     onTap: () {
-      Get.to(AzhkarDetailsScreen(azhkar: searchedList[index]),
+      Get.to(AzhkarDetailsScreen(azhkar: searchedList),
           transition: Transition.zoom);
     },
     child: BuildGeneralCard(
@@ -34,7 +33,7 @@ GestureDetector buildAzhkarDetailsCard(
               ),
             ]),
             Text(
-              searchedList[index].category,
+              searchedList.category,
               style: Styles.hadithCategoryTextStyle,
             ),
           ],
