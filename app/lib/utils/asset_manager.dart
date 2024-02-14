@@ -49,4 +49,5 @@ abstract class ImageAssets {
   static const String muslimJson = '$jsonPath/muslim.json';
   static const String nasaiJson = '$jsonPath/nasai.json';
   static const String trmiziJson = '$jsonPath/trmizi.json';
+  static const String azhkarJson = '$jsonPath/azhkar.json';
 }

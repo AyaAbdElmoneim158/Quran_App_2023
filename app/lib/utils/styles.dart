@@ -24,6 +24,8 @@ abstract class Styles {
   // AppBarTheme --------------------------------------------------------
   static AppBarTheme appBarThemeLight = AppBarTheme(
     elevation: 0,
+    scrolledUnderElevation: 0,
+
     backgroundColor: AppColors.kWitheColor,
     titleTextStyle: TextStyle(
       fontWeight: FontWeight.bold,
@@ -39,6 +41,8 @@ abstract class Styles {
 
   static AppBarTheme appBarThemeDart = AppBarTheme(
     elevation: 0,
+    scrolledUnderElevation: 0,
+    
     backgroundColor: AppColors.kbgDarkColor,
     titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
