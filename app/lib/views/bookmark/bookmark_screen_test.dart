@@ -102,7 +102,7 @@ class BookmarkScreenText extends StatelessWidget {
     return Dismissible(
       key: Key(bookmark.text), // Provide a unique key for each item
       onDismissed: (direction) {
-        cubit.deleteBookmark(index);
+        cubit.deleteBookmarkByText(bookmark.text);
         cubit.getBookmarks();
       },
       confirmDismiss: (DismissDirection direction) async {

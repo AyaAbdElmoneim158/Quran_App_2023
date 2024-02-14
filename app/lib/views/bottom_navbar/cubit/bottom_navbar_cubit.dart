@@ -1,5 +1,6 @@
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
+import 'package:app/views/azhkar/azhkar_screen.dart';
 import 'package:app/views/bookmark/bookmark_screen.dart';
 import 'package:app/views/hadith/hadith_screen.dart';
 
@@ -18,16 +19,8 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
   final _key = "isDark";
 
   int currentIndex = 1;
-  List<Widget> screens(context) => [
-        const HomeScreen(),
-        const HadithScreen(),
-        Center(
-            child: Text(
-          "Azhkar Screen",
-          style: Theme.of(context).textTheme.titleLarge,
-        )),
-        const BookmarkScreen()
-      ];
+  List<Widget> screens(context) =>
+      const [HomeScreen(), HadithScreen(), AzhkarScreen(), BookmarkScreen()];
   List<BottomNavigationBarItem> items() => [
         BottomNavigationBarItem(
           icon: Image.asset(

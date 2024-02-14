@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-GestureDetector buildHadithCard(int index, Hadith hadith) {
+GestureDetector buildHadithCard(int index, HadithModel hadith) {
   return GestureDetector(
     onTap: () {
       Get.to(HadithDetailsScreen(hadith: hadith));

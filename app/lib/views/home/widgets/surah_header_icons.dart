@@ -14,10 +14,12 @@ class SurahHeaderIcons extends StatefulWidget {
     super.key,
     required this.index,
     required this.bookmarkModel,
+    this.hasAudio = true,
   });
 
   final int index;
   final BookmarkModel bookmarkModel;
+  final bool hasAudio;
 
   @override
   State<SurahHeaderIcons> createState() => _SurahHeaderIconsState();
@@ -56,23 +58,25 @@ class _SurahHeaderIconsState extends State<SurahHeaderIcons> {
               ),
               const SizedBox(width: 8),
 //! Play ----------------------------------------------------------------------------------------------------------------------------
-              GestureDetector(
-                onTap: () async {
-                  await context
-                      .read<HomeCubit>()
-                      .playAudio(path: widget.bookmarkModel.audio);
-                  // debugPrint("${context.read<HomeCubit>().isPlay}");
-                  isPlay = true;
-                  setState(() {});
-                  Timer(context.read<HomeCubit>().audioDuration, () {
-                    isPlay = false;
-                    setState(() {});
-                  });
-                },
-                child: isPlay
-                    ? Image.asset(ImageAssets.playFillIcon)
-                    : Image.asset(ImageAssets.playOutlineIcon),
-              ),
+              widget.hasAudio
+                  ? GestureDetector(
+                      onTap: () async {
+                        await context
+                            .read<HomeCubit>()
+                            .playAudio(path: widget.bookmarkModel.audio);
+                        // debugPrint("${context.read<HomeCubit>().isPlay}");
+                        isPlay = true;
+                        setState(() {});
+                        Timer(context.read<HomeCubit>().audioDuration, () {
+                          isPlay = false;
+                          setState(() {});
+                        });
+                      },
+                      child: isPlay
+                          ? Image.asset(ImageAssets.playFillIcon)
+                          : Image.asset(ImageAssets.playOutlineIcon),
+                    )
+                  : const SizedBox(),
               const SizedBox(width: 8),
 //! Add ----------------------------------------------------------------------------------------------------------------------------
               GestureDetector(

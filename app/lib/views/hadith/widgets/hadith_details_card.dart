@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-BuildGeneralCard buildHadithDetailsCard(int index, Hadith hadith, context) {
+BuildGeneralCard buildHadithDetailsCard(
+    int index, HadithModel hadith, context) {
   return BuildGeneralCard(
     height: 250.h,
     child: Padding(

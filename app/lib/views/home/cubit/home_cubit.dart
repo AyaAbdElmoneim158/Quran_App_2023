@@ -3,12 +3,11 @@ import 'package:app/helper/audioplayers_helper.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/home/model/surah_model.dart';
 import 'package:flutter/material.dart';
-// ignore: unnecessary_import
+// ignore: unnecessary_import, depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:app/helper/read_json.dart';
 
 part 'home_state.dart';
 
@@ -25,11 +24,10 @@ class HomeCubit extends Cubit<HomeState> {
     }
     try {
       emit(FetchSurahDataListLoading());
-      final String response =
-          await rootBundle.loadString(ImageAssets.quranJson);
-      var data = await json.decode(response);
-      List _items = data;
-      surahList = _items.map((ele) => SurahModel.fromJson(ele)).toList();
+      var data = await ReadJson.readJson(ImageAssets.quranJson);
+
+      List items = data;
+      surahList = items.map((ele) => SurahModel.fromJson(ele)).toList();
       searchedList = surahList;
       debugPrint("Fetch SurahDataList Success : ${surahList.length}");
       emit(FetchSurahDataListSuccess());

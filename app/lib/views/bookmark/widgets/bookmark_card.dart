@@ -22,8 +22,9 @@ class BookmarkCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dismissible(
       key: Key(model.text),
-      onDismissed: (direction) {
-        context.read<BookmarkCubit>().deleteBookmark(index);
+      onDismissed: (direction) async {
+        await context.read<BookmarkCubit>().deleteBookmarkByText(model.text);
+        await context.read<BookmarkCubit>().getBookmarks();
       },
       confirmDismiss: (DismissDirection direction) async {
         return await showClearItemConfirmationDialog(context);
@@ -36,9 +37,10 @@ class BookmarkCard extends StatelessWidget {
         children: [
           SurahHeaderIcons(
             index: index,
+            hasAudio: (model.type == "hadith") ? false : true,
             bookmarkModel: BookmarkModel(
               text: model.text,
-              type: 'surah',
+              type: model.type,
               audio: model.audio,
             ),
           ),

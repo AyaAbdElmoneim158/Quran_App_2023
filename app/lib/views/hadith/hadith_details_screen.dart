@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 class HadithDetailsScreen extends StatelessWidget {
   const HadithDetailsScreen({super.key, required this.hadith});
-  final Hadith hadith;
+  final HadithModel hadith;
 
   @override
   Widget build(BuildContext context) {
@@ -20,24 +20,22 @@ class HadithDetailsScreen extends StatelessWidget {
           icon: Image.asset(ImageAssets.backArrowIcon),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          child: ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            separatorBuilder: (context, index) => const SizedBox(height: 16),
-            itemCount: hadith.array.length,
-            itemBuilder: (context, index) => index % 2 == 0
-                ? FadeInLeftBig(
-                    duration: const Duration(milliseconds: 1200),
-                    child: buildHadithDetailsCard(index, hadith, context),
-                  )
-                : FadeInRightBig(
-                    duration: const Duration(milliseconds: 1200),
-                    child: buildHadithDetailsCard(index, hadith, context),
-                  ),
-          ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        child: ListView.separated(
+          // shrinkWrap: true,
+          // physics: const NeverScrollableScrollPhysics(),
+          separatorBuilder: (context, index) => const SizedBox(height: 16),
+          itemCount: hadith.array.length,
+          itemBuilder: (context, index) => index % 2 == 0
+              ? FadeInLeftBig(
+                  duration: const Duration(milliseconds: 1200),
+                  child: buildHadithDetailsCard(index, hadith, context),
+                )
+              : FadeInRightBig(
+                  duration: const Duration(milliseconds: 1200),
+                  child: buildHadithDetailsCard(index, hadith, context),
+                ),
         ),
       ),
     );

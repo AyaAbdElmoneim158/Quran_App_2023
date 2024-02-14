@@ -39,19 +39,19 @@ class SurahModel {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['name_en'] = nameEn;
-    _data['name_translation'] = nameTranslation;
-    _data['words'] = words;
-    _data['letters'] = letters;
-    _data['type'] = type;
-    _data['type_en'] = typeEn;
-    _data['ar'] = ar;
-    _data['en'] = en;
-    _data['array'] = array.map((e) => e.toJson()).toList();
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['name_en'] = nameEn;
+    data['name_translation'] = nameTranslation;
+    data['words'] = words;
+    data['letters'] = letters;
+    data['type'] = type;
+    data['type_en'] = typeEn;
+    data['ar'] = ar;
+    data['en'] = en;
+    data['array'] = array.map((e) => e.toJson()).toList();
+    return data;
   }
 
  static List<SurahModel> dummySurah = [
@@ -414,15 +414,15 @@ class Array {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['ar'] = ar;
-    _data['en'] = en;
-    _data['filename'] = filename;
-    _data['path'] = path;
-    _data['dir'] = dir;
-    _data['size'] = size;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['ar'] = ar;
+    data['en'] = en;
+    data['filename'] = filename;
+    data['path'] = path;
+    data['dir'] = dir;
+    data['size'] = size;
+    return data;
   }
 }
 

@@ -32,46 +32,18 @@ class BookmarkCubit extends Cubit<BookmarkState> {
       final box = await Hive.openBox<BookmarkModel>(_boxName);
       if (!isBookmarked(bookmark.text)) {
         await box.add(bookmark);
-        await getBookmarks();
+      } else {
+        await deleteBookmarkByText(bookmark.text);
       }
-//! Todo:- Delete by bookmark.text-------------------------------------------
+      await getBookmarks();
+
       emit(BookmarkLoadSuccessState());
     } catch (e) {
       emit(BookmarkErrorState(message: 'Failed to add bookmark'));
     }
   }
 
-  // Update an existing bookmark in the Hive box
-  Future<void> updateBookmark(int index, BookmarkModel updatedBookmark) async {
-    try {
-      final box = await Hive.openBox<BookmarkModel>(_boxName);
-      await box.putAt(index, updatedBookmark);
-      emit(BookmarkLoadSuccessState());
-    } catch (e) {
-      emit(BookmarkErrorState(message: 'Failed to update bookmark'));
-    }
-  }
 
-  // Delete a bookmark from the Hive box
-  Future<void> deleteBookmark(int index) async {
-    try {
-      final box = await Hive.openBox<BookmarkModel>(_boxName);
-      await box.deleteAt(index);
-      await getBookmarks();
-      emit(BookmarkLoadSuccessState());
-    } catch (e) {
-      emit(BookmarkErrorState(message: 'Failed to delete bookmark'));
-    }
-  }
-
-  /* bool isBookmarked(String searchText) {
-    final existingBookmark = bookmarks.firstWhere(
-      (bookmark) => bookmark.text == searchText,
-      orElse: () => null,
-    );
-
-    return existingBookmark != null;
-  }*/
   bool isBookmarked(String searchText) {
     final box = Hive.box<BookmarkModel>('bookmarkBox');
     return box.values.any((bookmark) => bookmark.text == searchText);
@@ -96,5 +68,16 @@ class BookmarkCubit extends Cubit<BookmarkState> {
 
     zhkarBookmarks =
         bookmarks.where((bookmark) => bookmark.type == "zhkar").toList();
+  }
+
+  Future<void> deleteBookmarkByText(String searchText) async {
+    final box = Hive.box<BookmarkModel>('bookmarkBox');
+    final bookmarks =
+        box.values.where((bookmark) => bookmark.text == searchText).toList();
+
+    for (var bookmark in bookmarks) {
+      final index = box.values.toList().indexOf(bookmark);
+      await box.deleteAt(index);
+    }
   }
 }

@@ -31,8 +31,8 @@ class BookmarkDetailsListView extends StatelessWidget {
           child: bookmarks.isEmpty
               ? buildEmptyList(context)
               : ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
+                  // shrinkWrap: true,
+                  // physics: const NeverScrollableScrollPhysics(),
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 16),
                   itemCount: bookmarks.length,
