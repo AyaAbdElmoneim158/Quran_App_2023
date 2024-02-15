@@ -27,7 +27,7 @@ class SplashImage extends StatelessWidget {
         ),
         Positioned(
           bottom: -30.h,
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {
               SplashService.goToBottomNavbar();
             },

@@ -1,6 +1,4 @@
-import 'package:app/utils/app_color.dart';
 import 'package:app/utils/app_string.dart';
-import 'package:app/utils/constance.dart';
 import 'package:app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

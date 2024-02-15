@@ -38,14 +38,14 @@ class BookmarkScreen extends StatelessWidget {
               ),
               // actions: const [BuildAction()],
               elevation: 0,
-              // leading: IconButton(
-              //   onPressed: () => context
-              //       .read<BottomNavbarCubit>()
-              //       .scaffoldKey
-              //       .currentState!
-              //       .openDrawer(),
-              //   icon: Image.asset(ImageAssets.menuIcon),
-              // ),
+              leading: IconButton(
+                onPressed: () => context
+                    .read<BottomNavbarCubit>()
+                    .scaffoldKey
+                    .currentState!
+                    .openDrawer(),
+                icon: Image.asset(ImageAssets.menuIcon),
+              ),
             ),
             drawer: buildCustomDrawer(context),
             body: Padding(
@@ -55,8 +55,8 @@ class BookmarkScreen extends StatelessWidget {
                 children: [
                   // "surah", "hadith", "zhkar"
                   _buildFolder("Surah", surahBookmarks, context),
-                  _buildFolder("Hadith", hadithBookmarks, context),
-                  _buildFolder("Zhkar", zhkarBookmarks, context),
+                  // _buildFolder("Hadith", hadithBookmarks, context),
+                  _buildFolder("Azhkar", zhkarBookmarks, context),
                 ],
               ),
             ));

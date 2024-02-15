@@ -65,7 +65,7 @@ class CustomDrawer extends StatelessWidget {
   Widget _buildChangeTheme(context) {
     return Padding(
       padding: EdgeInsets.all(Constance.padding16),
-      child: InkWell(
+      child: GestureDetector(
         onTap: onTap,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

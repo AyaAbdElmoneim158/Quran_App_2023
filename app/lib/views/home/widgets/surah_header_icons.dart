@@ -49,14 +49,14 @@ class _SurahHeaderIconsState extends State<SurahHeaderIcons> {
           Row(
             children: [
 //! Share ----------------------------------------------------------------------------------------------------------------------------
-              GestureDetector(
-                onTap: () async {
-                  debugPrint("Share");
-                  context.read<HomeCubit>().shareAyet('ayet');
-                },
-                child: Image.asset(ImageAssets.shareIcon),
-              ),
-              const SizedBox(width: 8),
+              // GestureDetector(
+              //   onTap: () async {
+              //     debugPrint("Share");
+              //     context.read<HomeCubit>().shareAyet('ayet');
+              //   },
+              //   child: Image.asset(ImageAssets.shareIcon),
+              // ),
+              // const SizedBox(width: 8),
 //! Play ----------------------------------------------------------------------------------------------------------------------------
               widget.hasAudio
                   ? GestureDetector(

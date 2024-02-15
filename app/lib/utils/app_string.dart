@@ -9,7 +9,7 @@ abstract class AppString {
 
   static const String bottomNavigationBarItemQuranText = "Quran";
   static const String bottomNavigationBarItemPrayerText = "Prayer";
-  static const String bottomNavigationBarItemPrayText = "Pray";
+  static const String bottomNavigationBarItemPrayText = "Azhkar";
   static const String bottomNavigationBarItemBookmarkText = "Bookmark";
 
   static const String darkMode = "Dark mode";

@@ -14,9 +14,6 @@ class BottomNavbar extends StatelessWidget {
         var cubit = BottomNavbarCubit.get(context);
 
         return Scaffold(
-          key: cubit.scaffoldKey,
-          appBar: cubit.appBars(context)[cubit.currentIndex],
-          drawer: cubit.getDrawer(context),
           bottomNavigationBar: CustomBottomNavbar(
             items: cubit.items(),
             onTap: (value) => cubit.changeBottomNavbar(value),

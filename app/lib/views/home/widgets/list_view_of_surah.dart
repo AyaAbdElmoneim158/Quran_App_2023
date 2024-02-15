@@ -14,6 +14,7 @@ class ListViewOfSurah extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
+
         return (state is FetchSurahDataListLoading)
             ? buildLoading(context)
             : (cubit.searchedList.isEmpty)
@@ -24,22 +25,18 @@ class ListViewOfSurah extends StatelessWidget {
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 16),
                     itemCount: cubit.searchedList.length,
-                    itemBuilder: (context, index) => index % 2 == 0
-                        ? FadeInLeftBig(
-                            duration: const Duration(milliseconds: 1200),
-                            child: SurahCard(
-                              index: index,
-                              surah: cubit.searchedList[index],
-                            ),
-                          )
-                        : FadeInRightBig(
-                            duration: const Duration(milliseconds: 1200),
-                            child: SurahCard(
-                              index: index,
-                              surah: cubit.searchedList[index],
-                            ),
-                          ),
-                  );
+                    itemBuilder: (context, index) {
+                      var item = cubit.searchedList[index];
+                      return (index % 2 == 0)
+                          ? FadeInLeftBig(
+                              duration: const Duration(milliseconds: 1200),
+                              child: SurahCard(index: index, surah: item),
+                            )
+                          : FadeInRightBig(
+                              duration: const Duration(milliseconds: 1200),
+                              child: SurahCard(index: index, surah: item),
+                            );
+                    });
       },
     );
   }

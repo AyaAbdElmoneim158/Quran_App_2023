@@ -26,16 +26,24 @@ Widget quranCard() {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      ImageAssets.bookIcon,
-                      width: 20.w,
-                      height: 20.h,
+                    Expanded(
+                      flex: 1,
+                      child: Image.asset(
+                        ImageAssets.bookIcon,
+                        width: 20.w,
+                        height: 20.h,
+                      ),
                     ),
                     SizedBox(width: Constance.padding16 / 2),
-                    Text(
-                      AppString.lastRead,
-                      style: Styles.lastReadTextStyle,
+                    Expanded(
+                      flex: 11,
+                      child: Text(
+                        AppString.lastRead,
+                        overflow: TextOverflow.ellipsis,
+                        style: Styles.lastReadTextStyle,
+                      ),
                     ),
                   ],
                 ),

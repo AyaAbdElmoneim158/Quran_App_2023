@@ -22,40 +22,54 @@ class SurahCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset(ImageAssets.starIcon),
-                  Text(
-                    '${index + 1}',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  )
-                ],
-              ),
-              const SizedBox(width: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    surah.nameTranslation,
-                    style: Theme.of(context).textTheme.bodyLarge,
+          Expanded(
+            flex: 10,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(ImageAssets.starIcon),
+                      Text(
+                        '${index + 1}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      )
+                    ],
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    "${surah.typeEn}  ${surah.array.length} verses ",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              )
-            ],
-          ),
-          Text(
-            surah.name,
-            style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                  fontFamily: AppString.amiriFont,
                 ),
+                const SizedBox(width: 8),
+                Expanded(
+                  flex: 10,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        surah.nameTranslation,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        "${surah.typeEn}  ${surah.array.length} verses ",
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Text(
+              surah.name,
+              style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                    fontFamily: AppString.amiriFont,
+                  ),
+            ),
           ),
         ],
       ),
