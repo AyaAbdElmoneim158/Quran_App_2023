@@ -1,7 +1,7 @@
+import 'package:app/utils/app_router.dart';
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/home/model/surah_model.dart';
-import 'package:app/views/home/surah_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class SurahCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(SurahDetailsScreen(surah: surah), transition: Transition.zoom);
+        Get.toNamed(Routes.surahDetails, arguments: {"surah": surah});
         debugPrint("Pushing to SurahDetailsScreen");
       },
       child: Row(

@@ -2,7 +2,6 @@ import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/common_widgets.dart';
 import 'package:app/views/azhkar/cubit/azhkar_cubit.dart';
 import 'package:app/views/azhkar/widgets/azhkar_screen_list_view.dart';
-import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
 import 'package:app/views/home/widgets/build_action.dart';
 import 'package:app/views/home/widgets/build_title.dart';
 import 'package:flutter/material.dart';

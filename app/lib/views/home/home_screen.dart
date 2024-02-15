@@ -1,7 +1,6 @@
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/constance.dart';
-import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
 import 'package:app/views/home/cubit/home_cubit.dart';
 import 'package:app/views/home/widgets/build_action.dart';
 import 'package:app/views/home/widgets/build_intro_text.dart';

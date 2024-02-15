@@ -20,38 +20,42 @@ class HadithScreenListView extends StatelessWidget {
             ? buildLoading(context)
             : (cubit.searchedList.isEmpty)
                 ? buildEmptyList(context)
-                : SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 16),
-                      child: ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          separatorBuilder: (context, index) =>
-                              const SizedBox(height: 16),
-                          itemCount: cubit.searchedList.length,
-                          itemBuilder: (context, index) {
-                            var hadith = cubit.searchedList[index];
-                            return (index % 2 == 0)
-                                ? FadeInLeftBig(
-                                    duration:
-                                        const Duration(milliseconds: 1200),
-                                    child: buildHadithCard(
-                                      index,
-                                      hadith,
-                                    ),
-                                  )
-                                : FadeInRightBig(
-                                    duration:
-                                        const Duration(milliseconds: 1200),
-                                    child: buildHadithCard(
-                                      index,
-                                      hadith,
-                                    ),
-                                  );
-                          }),
-                    ),
-                  );
+                : (state is LoadingAll)
+                    ? SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          child: ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 16),
+                              itemCount: cubit.searchedList.length,
+                              itemBuilder: (context, index) {
+                                var hadith = cubit.searchedList[index];
+                                return (index % 2 == 0)
+                                    ? FadeInLeftBig(
+                                        duration:
+                                            const Duration(milliseconds: 1200),
+                                        child: buildHadithCard(
+                                          index,
+                                          hadith,
+                                        ),
+                                      )
+                                    : FadeInRightBig(
+                                        duration:
+                                            const Duration(milliseconds: 1200),
+                                        child: buildHadithCard(
+                                          index,
+                                          hadith,
+                                        ),
+                                      );
+                              }),
+                        ),
+                      )
+                    : const SizedBox(
+                        child: Text("SizeBox"),
+                      );
       },
     );
   }

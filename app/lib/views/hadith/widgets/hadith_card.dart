@@ -1,8 +1,8 @@
+import 'package:app/utils/app_router.dart';
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/styles.dart';
-import 'package:app/views/hadith/hadith_details_screen.dart';
 import 'package:app/views/hadith/models/hadith_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +11,8 @@ import 'package:get/get.dart';
 GestureDetector buildHadithCard(int index, HadithModel hadith) {
   return GestureDetector(
     onTap: () {
-      Get.to(HadithDetailsScreen(hadith: hadith));
+      Get.toNamed(Routes.hadithDetails, arguments: {'hadith': hadith});
+      debugPrint("Pushing to hadithDetails");
     },
     child: BuildGeneralCard(
       height: 200.h,

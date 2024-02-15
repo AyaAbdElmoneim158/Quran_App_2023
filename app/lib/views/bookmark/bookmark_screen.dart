@@ -1,8 +1,8 @@
+import 'package:app/utils/app_router.dart';
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/constance.dart';
-import 'package:app/views/bookmark/bookmark_details_screen.dart';
 import 'package:app/views/bookmark/cubit/bookmark_cubit.dart';
 import 'package:app/views/bookmark/model/bookmark_model.dart';
 import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
@@ -71,17 +71,18 @@ class BookmarkScreen extends StatelessWidget {
   ) {
     return InkWell(
       onTap: () {
-        Get.to(BookmarkDetailsScreen(
-          type: folderName,
-          // bookmarks: bookmarks,
-        ));
+        Get.toNamed(Routes.bookmarkDetails, arguments: {"type": folderName});
         debugPrint("Pushing to BookmarkDetailsScreen");
       },
       child: Column(
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(ImageAssets.folderIcon),
+              Image.asset(
+                ImageAssets.folderIcon,
+                height: 24,
+              ),
               SizedBox(width: Constance.padding16 / 2),
               Column(
                 children: [

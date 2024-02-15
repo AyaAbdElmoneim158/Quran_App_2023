@@ -35,8 +35,9 @@ abstract class ImageAssets {
   static const String quranSplashImage = '$imagePath/quran_splash.png';
   static const String quranImage = '$imagePath/quran.png';
   static const String loading1Image = '$imagePath/loading_1.gif';
-  static const String loading2Image = '$imagePath/loading_2.gif'; //
+  static const String loading2Image = '$imagePath/loading_2.gif';
   static const String warningImage = '$imagePath/warning.png';
+  static const String notFoundImage = '$imagePath/not_found.png';
 
   //Jsons ---------------------------------------------------------------------
   static const String quranJson = '$jsonPath/quran.json';

@@ -1,6 +1,6 @@
+import 'package:app/utils/app_router.dart';
 import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/styles.dart';
-import 'package:app/views/azhkar/azhkar_details_screen.dart';
 import 'package:app/views/azhkar/model/azhkar_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 GestureDetector buildAzhkarDetailsCard(int index, AzhkarModel searchedList) {
   return GestureDetector(
     onTap: () {
-      Get.to(AzhkarDetailsScreen(azhkar: searchedList),
-          transition: Transition.zoom);
+      Get.toNamed(Routes.azhkarDetails, arguments: {"azhkar": searchedList});
+      debugPrint("Pushing to azhkarDetails");
     },
     child: BuildGeneralCard(
       height: 200.h,

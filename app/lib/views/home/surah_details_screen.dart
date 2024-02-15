@@ -1,6 +1,5 @@
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/constance.dart';
-import 'package:app/views/home/model/surah_model.dart';
 import 'package:app/views/home/widgets/surah_info_card.dart';
 import 'package:app/views/home/widgets/verse_card.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +7,14 @@ import 'package:get/get.dart';
 import 'package:animate_do/animate_do.dart';
 
 class SurahDetailsScreen extends StatelessWidget {
-  const SurahDetailsScreen({super.key, required this.surah});
-  final SurahModel surah;
+  const SurahDetailsScreen({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
+    var surah = Get.arguments["surah"];
+
     return Scaffold(
       appBar: AppBar(
           title: Text(surah.nameTranslation),

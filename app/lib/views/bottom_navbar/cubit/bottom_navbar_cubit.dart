@@ -18,7 +18,7 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
   final GetStorage _box = GetStorage();
   final _key = "isDark";
 
-  int currentIndex = 1;
+  int currentIndex = 0;
   List<Widget> screens(context) => const [
         HomeScreen(),
         HadithScreen(),

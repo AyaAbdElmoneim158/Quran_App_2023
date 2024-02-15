@@ -5,7 +5,7 @@ sealed class HadithState {}
 
 final class HadithInitial extends HadithState {}
 
-final class FetchHadithsLoading extends HadithState {}
+final class LoadingAll extends HadithState {}
 
 final class FetchHadithLoading extends HadithState {}
 

@@ -1,14 +1,15 @@
-import 'package:app/views/azhkar/model/azhkar_model.dart';
 import 'package:app/views/azhkar/widgets/azhkar_card.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:get/get.dart';
 
 class AzhkarDetailsScreen extends StatelessWidget {
-  const AzhkarDetailsScreen({super.key, required this.azhkar});
-  final AzhkarModel azhkar;
+  const AzhkarDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var azhkar = Get.arguments["azhkar"];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(azhkar.category),

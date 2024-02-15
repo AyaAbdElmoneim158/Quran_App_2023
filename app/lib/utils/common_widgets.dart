@@ -37,7 +37,7 @@ class BuildGeneralCard extends StatelessWidget {
             bottom: 0,
             child: Image.asset(
               ImageAssets.quranLightImage,
-              height: 100,
+              // height: 100,
             ),
           ),
           child
@@ -55,9 +55,8 @@ Divider buildCustomDivider() {
   );
 }
 
-SizedBox buildLoading(BuildContext context) {
-  return SizedBox(
-    height: MediaQuery.of(context).size.height * 0.5,
+Widget buildLoading(BuildContext context) {
+  return Center(
     child: Center(
       child: Image.asset(
         ImageAssets.loading1Image,
@@ -67,21 +66,20 @@ SizedBox buildLoading(BuildContext context) {
   );
 }
 
-SizedBox buildEmptyList(BuildContext context) {
-  return SizedBox(
-    height: MediaQuery.of(context).size.height * 0.5,
+Widget buildEmptyList(BuildContext context) {
+  return Center(
     child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            ImageAssets.search2Icon,
+            ImageAssets.notFoundImage,
             height: 130,
           ),
           const SizedBox(height: 8),
           Text(
             AppString.emptyList,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ],
       ),

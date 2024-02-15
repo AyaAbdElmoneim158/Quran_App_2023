@@ -31,9 +31,15 @@ class QuranApp extends StatelessWidget {
           BlocProvider<BookmarkCubit>(
             create: (BuildContext context) => BookmarkCubit()..getBookmarks(),
           ),
-          BlocProvider<HadithCubit>(
-            create: (BuildContext context) => HadithCubit()..fetchHadiths(),
-          ),
+          BlocProvider<HadithCubit>(create: (BuildContext context) {
+            var cubit = HadithCubit();
+            cubit.fetchHadiths().then(
+                  (value) => cubit.emit(
+                    LoadingAll(),
+                  ),
+                );
+            return HadithCubit();
+          }),
           BlocProvider<AzhkarCubit>(
             create: (BuildContext context) =>
                 AzhkarCubit()..fetchAzhkarDataList(),
@@ -44,7 +50,7 @@ class QuranApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme(),
           darkTheme: AppTheme.darkTheme(),
-          themeMode: ThemeMode.light,
+          themeMode: ThemeMode.system,
           initialRoute: Routes.initRoute,
           getPages: getPages,
           unknownRoute: unknownRoute(),

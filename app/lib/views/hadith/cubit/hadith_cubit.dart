@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:app/helper/read_json.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/hadith/models/hadith_model.dart';
@@ -28,16 +26,16 @@ class HadithCubit extends Cubit<HadithState> {
 
   int count = 0;
 
-  fetchHadiths() {
-    fetchAbiDaud();
-    fetchAhmed();
-    fetchBukhari();
-    fetchDarimi();
-    fetchIbnMaja();
-    fetchMalik();
-    fetchMuslim();
-    fetchNasai();
-    fetchTrmizi();
+  Future<void> fetchHadiths() async {
+    await fetchAbiDaud();
+    await fetchAhmed();
+    await fetchBukhari();
+    await fetchDarimi();
+    await fetchIbnMaja();
+    await fetchMalik();
+    await fetchMuslim();
+    await fetchNasai();
+    await fetchTrmizi();
 
     // if (count == 9) {
     //   emit(FetchHadithsLoading());
@@ -55,10 +53,10 @@ class HadithCubit extends Cubit<HadithState> {
     debugPrint("Len muslimHadithList: ${muslimHadithList.length}");
     debugPrint("Len nasaiHadithList: ${nasaiHadithList.length}");
     debugPrint("Len trmiziHadithList: ${trmiziHadithList.length}");
-    debugPrint("Len realHadiths: ${realHadiths.length}");
+    debugPrint("╰┈➤ Len realHadiths: ${realHadiths.length}");
   }
 
-  void fetchAbiDaud() async {
+  Future<void> fetchAbiDaud() async {
     if (abiDaudHadithList.isNotEmpty) {
       return;
     }
@@ -85,7 +83,7 @@ class HadithCubit extends Cubit<HadithState> {
     }
   }
 
-  void fetchAhmed() async {
+  Future<void> fetchAhmed() async {
     if (ahmedHadithList.isNotEmpty) {
       return;
     }
@@ -111,7 +109,7 @@ class HadithCubit extends Cubit<HadithState> {
     }
   }
 
-  void fetchBukhari() async {
+  Future<void> fetchBukhari() async {
     if (bukhariHadithList.isNotEmpty) {
       return;
     }
@@ -137,7 +135,7 @@ class HadithCubit extends Cubit<HadithState> {
     }
   }
 
-  void fetchDarimi() async {
+  Future<void> fetchDarimi() async {
     if (darimiHadithList.isNotEmpty) {
       return;
     }
@@ -163,7 +161,7 @@ class HadithCubit extends Cubit<HadithState> {
     }
   }
 
-  void fetchIbnMaja() async {
+  Future<void> fetchIbnMaja() async {
     if (ibnMajaHadithList.isNotEmpty) {
       return;
     }
@@ -189,7 +187,7 @@ class HadithCubit extends Cubit<HadithState> {
     }
   }
 
-  void fetchMalik() async {
+  Future<void> fetchMalik() async {
     if (malikHadithList.isNotEmpty) {
       return;
     }
@@ -215,7 +213,7 @@ class HadithCubit extends Cubit<HadithState> {
     }
   }
 
-  void fetchMuslim() async {
+  Future<void> fetchMuslim() async {
     if (muslimHadithList.isNotEmpty) {
       return;
     }
@@ -241,7 +239,7 @@ class HadithCubit extends Cubit<HadithState> {
     }
   }
 
-  void fetchNasai() async {
+  Future<void> fetchNasai() async {
     if (nasaiHadithList.isNotEmpty) {
       return;
     }
@@ -267,7 +265,7 @@ class HadithCubit extends Cubit<HadithState> {
     }
   }
 
-  void fetchTrmizi() async {
+  Future<void> fetchTrmizi() async {
     if (trmiziHadithList.isNotEmpty) {
       return;
     }
