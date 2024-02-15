@@ -1,17 +1,23 @@
 import 'package:app/utils/app_color.dart';
-import 'package:app/views/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BuildAction extends StatelessWidget {
-  const BuildAction({super.key});
+  const BuildAction({
+    super.key,
+    required this.isSearch,
+    required this.clearSearched,
+    required this.startSearched,
+  });
+  final bool isSearch;
+  final void Function() clearSearched;
+  final void Function() startSearched;
 
   @override
   Widget build(BuildContext context) {
-    return (context.watch<HomeCubit>().isSearch)
+    return (isSearch)
         ? IconButton(
             onPressed: () {
-              context.read<HomeCubit>().clearSearched();
+              clearSearched;
               Navigator.pop(context);
             },
             icon: const Icon(
@@ -20,9 +26,7 @@ class BuildAction extends StatelessWidget {
             ),
           )
         : IconButton(
-            onPressed: () {
-              context.read<HomeCubit>().startSearched(context);
-            },
+            onPressed: startSearched,
             icon: const Icon(
               Icons.search,
               color: AppColors.kTextMediumColor,

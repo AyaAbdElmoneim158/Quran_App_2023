@@ -14,6 +14,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   static HomeCubit get(context) => BlocProvider.of(context);
+  final GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();
 
   List<dynamic> searchedList = [];
   List<SurahModel> surahList = [];
@@ -63,6 +64,8 @@ class HomeCubit extends Cubit<HomeState> {
           )
           .toList();
     }
+    debugPrint("Surah searchedList Len : ${searchedList.length} ");
+
     searchedList = results;
     emit(RunSearchedState());
   }

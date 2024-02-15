@@ -2,6 +2,7 @@ import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/common_widgets.dart';
 import 'package:app/utils/constance.dart';
 import 'package:app/views/bottom_navbar/cubit/bottom_navbar_cubit.dart';
+import 'package:app/views/home/cubit/home_cubit.dart';
 import 'package:app/views/home/widgets/build_action.dart';
 import 'package:app/views/home/widgets/build_intro_text.dart';
 import 'package:app/views/home/widgets/build_title.dart';
@@ -18,13 +19,25 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       key: context.read<BottomNavbarCubit>().scaffoldKey,
       appBar: AppBar(
-        title: const BuildTitle(),
-        actions: const [BuildAction()],
+        title: BuildTitle(
+          isSearch: context.watch<HomeCubit>().isSearch,
+          controller: context.read<HomeCubit>().searchedTextEditingController,
+          runFilter: (searchedChar) =>
+              context.read<HomeCubit>().runFilter(searchedChar),
+        ),
+        actions: [
+          BuildAction(
+            isSearch: context.watch<HomeCubit>().isSearch,
+            clearSearched: () => context.read<HomeCubit>().clearSearched(),
+            startSearched: () =>
+                context.read<HomeCubit>().startSearched(context),
+          )
+        ],
         elevation: 0,
         leading: IconButton(
           onPressed: () => context
-              .read<BottomNavbarCubit>()
-              .scaffoldKey
+              .read<HomeCubit>()
+              .homeScaffoldKey
               .currentState!
               .openDrawer(),
           icon: Image.asset(ImageAssets.menuIcon),

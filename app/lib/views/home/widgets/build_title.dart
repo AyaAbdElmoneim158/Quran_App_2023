@@ -1,20 +1,26 @@
 import 'package:app/utils/app_color.dart';
 import 'package:app/utils/app_string.dart';
-import 'package:app/views/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildTitle extends StatelessWidget {
-  const BuildTitle({super.key});
+  const BuildTitle({
+    super.key,
+    required this.isSearch,
+    required this.controller,
+    required this.runFilter,
+  });
+  final bool isSearch;
+  final TextEditingController? controller;
+  final void Function(String) runFilter;
 
   @override
   Widget build(BuildContext context) {
-    return (context.watch<HomeCubit>().isSearch)
+    return (isSearch)
         ? TextField(
-            controller: context.read<HomeCubit>().searchedTextEditingController,
+            controller: controller,
             onChanged: (searchedChar) {
-              context.read<HomeCubit>().runFilter(searchedChar);
+              runFilter(searchedChar);
             },
             cursorColor: AppColors.kTextMediumColor,
             style: TextStyle(
