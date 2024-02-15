@@ -1,5 +1,6 @@
 import 'package:app/utils/app_color.dart';
 import 'package:app/utils/app_string.dart';
+import 'package:app/utils/constance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +26,6 @@ abstract class Styles {
   static AppBarTheme appBarThemeLight = AppBarTheme(
     elevation: 0,
     scrolledUnderElevation: 0,
-
     backgroundColor: AppColors.kWitheColor,
     titleTextStyle: TextStyle(
       fontWeight: FontWeight.bold,
@@ -42,7 +42,6 @@ abstract class Styles {
   static AppBarTheme appBarThemeDart = AppBarTheme(
     elevation: 0,
     scrolledUnderElevation: 0,
-    
     backgroundColor: AppColors.kbgDarkColor,
     titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
@@ -175,13 +174,11 @@ abstract class Styles {
       Theme.of(context).textTheme.bodyMedium!.copyWith(
             fontSize: 18.sp,
             fontWeight: FontWeight.w400,
-            fontFamily: AppString.poppinsFont,
           );
 
   static TextStyle? splashAppNameTextStyle(context) =>
       Theme.of(context).textTheme.titleMedium!.copyWith(
             fontSize: 28.sp,
-            fontFamily: AppString.poppinsFont,
           );
 
   static TextStyle? ayahNo1TextStyle = TextStyle(
@@ -286,5 +283,18 @@ abstract class Styles {
     fontSize: 18,
     fontFamily: AppString.amiriFont,
     color: AppColors.kWitheColor,
+  );
+
+  static Decoration? decorationOfGetStartedBtn = BoxDecoration(
+    boxShadow: [
+      BoxShadow(
+        offset: const Offset(0, 4),
+        spreadRadius: 0,
+        blurRadius: 4,
+        color: Colors.black.withOpacity(0.25),
+      )
+    ],
+    color: AppColors.kColor,
+    borderRadius: BorderRadius.all(Constance.radius30),
   );
 }

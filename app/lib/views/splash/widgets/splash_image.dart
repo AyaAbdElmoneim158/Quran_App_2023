@@ -3,6 +3,7 @@ import 'package:app/utils/constance.dart';
 import 'package:app/views/splash/service/splash_service.dart';
 import 'package:app/views/splash/widgets/build_get_started_btn.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashImage extends StatelessWidget {
   const SplashImage({super.key});
@@ -18,10 +19,14 @@ class SplashImage extends StatelessWidget {
             borderRadius: BorderRadius.all(Constance.radius30),
           ),
           clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: Image.asset(ImageAssets.quranSplashImage),
+          child: Image.asset(
+            ImageAssets.quranSplashImage,
+            width: 314.w,
+            height: 450.h,
+          ),
         ),
         Positioned(
-          bottom: -30,
+          bottom: -30.h,
           child: InkWell(
             onTap: () {
               SplashService.goToBottomNavbar();

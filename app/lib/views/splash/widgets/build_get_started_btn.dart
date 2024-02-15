@@ -11,17 +11,7 @@ Container buildGetStartedBtn() {
     width: 185.w,
     height: 60.h,
     padding: const EdgeInsets.all(17),
-    decoration: BoxDecoration(
-      boxShadow: [
-        BoxShadow(
-            offset: const Offset(0, 4),
-            spreadRadius: 0,
-            blurRadius: 4,
-            color: Colors.black.withOpacity(0.25))
-      ],
-      color: AppColors.kColor,
-      borderRadius: BorderRadius.all(Constance.radius30),
-    ),
+    decoration: Styles.decorationOfGetStartedBtn,
     child: Text(
       AppString.getStartedBtn,
       style: Styles.getStartedBtnTextStyle,
