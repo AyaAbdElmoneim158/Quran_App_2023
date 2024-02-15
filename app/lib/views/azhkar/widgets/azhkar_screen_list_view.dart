@@ -16,12 +16,12 @@ class AzhkarScreenListView extends StatelessWidget {
       builder: (context, state) {
         var cubit = AzhkarCubit.get(context);
 
-        return SingleChildScrollView(
-          child: (state is FetchAzhkarDataListLoading)
-              ? buildLoading(context)
-              : (cubit.searchedList.isEmpty)
-                  ? buildEmptyList(context)
-                  : Padding(
+        return (state is FetchAzhkarDataListLoading)
+            ? buildLoading(context)
+            : (cubit.searchedList.isEmpty)
+                ? buildEmptyList(context)
+                : SingleChildScrollView(
+                    child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 24),
                       child: ListView.separated(
@@ -48,7 +48,7 @@ class AzhkarScreenListView extends StatelessWidget {
                                   );
                           }),
                     ),
-        );
+                  );
       },
     );
   }

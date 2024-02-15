@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:app/helper/read_json.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/hadith/models/hadith_model.dart';
@@ -24,6 +26,8 @@ class HadithCubit extends Cubit<HadithState> {
   List<dynamic> trmiziHadithList = [];
   List<HadithModel> realHadiths = [];
 
+  int count = 0;
+
   fetchHadiths() {
     fetchAbiDaud();
     fetchAhmed();
@@ -34,6 +38,14 @@ class HadithCubit extends Cubit<HadithState> {
     fetchMuslim();
     fetchNasai();
     fetchTrmizi();
+
+    // if (count == 9) {
+    //   emit(FetchHadithsLoading());
+    // }
+    // Timer(const Duration(seconds: 5), () {
+    //
+    // });
+
     debugPrint("Len abiDaudHadithList: ${abiDaudHadithList.length}");
     debugPrint("Len ahmedHadithList: ${ahmedHadithList.length}");
     debugPrint("Len bukhariHadithList: ${bukhariHadithList.length}");
@@ -60,8 +72,12 @@ class HadithCubit extends Cubit<HadithState> {
           "array": abiDaudHadithList,
         }),
       );
+      count++;
+      debugPrint("count: $count");
+
       debugPrint(
           "Fetch abiDaudHadithList Success : ${abiDaudHadithList.length} --- ${realHadiths.length}");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
@@ -85,6 +101,9 @@ class HadithCubit extends Cubit<HadithState> {
       );
       debugPrint(
           "Fetch ahmedHadithList Success : ${ahmedHadithList.length} --- ${realHadiths.length}");
+      count++;
+      debugPrint("count: $count");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
@@ -108,6 +127,9 @@ class HadithCubit extends Cubit<HadithState> {
       );
       debugPrint(
           "Fetch bukhariHadithList Success : ${bukhariHadithList.length} --- ${realHadiths.length}");
+      count++;
+      debugPrint("count: $count");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
@@ -131,6 +153,9 @@ class HadithCubit extends Cubit<HadithState> {
       );
       debugPrint(
           "Fetch darimiHadithList Success : ${darimiHadithList.length} --- ${realHadiths.length}");
+      count++;
+      debugPrint("count: $count");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
@@ -154,6 +179,9 @@ class HadithCubit extends Cubit<HadithState> {
       );
       debugPrint(
           "Fetch ibnMajaHadithList Success : ${ibnMajaHadithList.length} --- ${realHadiths.length}");
+      count++;
+      debugPrint("count: $count");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
@@ -177,6 +205,9 @@ class HadithCubit extends Cubit<HadithState> {
       );
       debugPrint(
           "Fetch malikHadithList Success : ${malikHadithList.length} --- ${realHadiths.length}");
+      count++;
+      debugPrint("count: $count");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
@@ -200,6 +231,9 @@ class HadithCubit extends Cubit<HadithState> {
       );
       debugPrint(
           "Fetch muslimHadithList Success : ${muslimHadithList.length} --- ${realHadiths.length}");
+      count++;
+      debugPrint("count: $count");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
@@ -223,6 +257,9 @@ class HadithCubit extends Cubit<HadithState> {
       );
       debugPrint(
           "Fetch nasaiHadithList Success : ${nasaiHadithList.length} --- ${realHadiths.length}");
+      count++;
+      debugPrint("count: $count");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
@@ -246,10 +283,67 @@ class HadithCubit extends Cubit<HadithState> {
       );
       debugPrint(
           "Fetch trmiziHadithList Success : ${trmiziHadithList.length} --- ${realHadiths.length}");
+      count++;
+      debugPrint("count: $count");
+
       emit(FetchHadithSuccess());
     } catch (e) {
       debugPrint("FetchHadithError: ${e.toString()}");
       emit(FetchHadithError(e.toString()));
     }
+  }
+
+// ***********************************************************
+  final TextEditingController searchedTextEditingController =
+      TextEditingController();
+  bool isSearch = false;
+  final GlobalKey<ScaffoldState> hadithScaffoldKey = GlobalKey<ScaffoldState>();
+  List<dynamic> searchedList = [];
+
+  changeSearched() {
+    isSearch = !isSearch;
+    debugPrint("IsSearch: $isSearch");
+  }
+
+  void runFilter(String value) {
+    List<HadithModel> results = [];
+    if (value.isEmpty || searchedTextEditingController.text.isEmpty) {
+      results = realHadiths;
+    } else {
+      results = realHadiths
+          .where(
+            (hadith) =>
+                hadith.category.toLowerCase().contains(value.toLowerCase()) ||
+                hadith.category.toLowerCase().contains(
+                      value.toLowerCase(),
+                    ),
+          )
+          .toList();
+    }
+    debugPrint("Hadiths searchedList Len : ${searchedList.length} ");
+
+    searchedList = results;
+    emit(RunSearchedState());
+  }
+
+  void startSearched(context) {
+    ModalRoute.of(context)
+        ?.addLocalHistoryEntry(LocalHistoryEntry(onRemove: stopSearched));
+    isSearch = true;
+    debugPrint('search');
+    emit(StartSearchedState());
+  }
+
+  void stopSearched() {
+    clearSearched();
+    isSearch = false;
+    searchedList = realHadiths;
+    emit(StopSearchedState());
+  }
+
+  void clearSearched() {
+    searchedTextEditingController.clear();
+    searchedList = realHadiths;
+    emit(ClearSearchedState());
   }
 }

@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: context.read<BottomNavbarCubit>().scaffoldKey,
+      key: context.read<HomeCubit>().homeScaffoldKey,
       appBar: AppBar(
         title: BuildTitle(
           isSearch: context.watch<HomeCubit>().isSearch,

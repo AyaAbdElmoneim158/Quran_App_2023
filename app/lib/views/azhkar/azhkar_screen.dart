@@ -19,7 +19,7 @@ class _AzhkarScreenState extends State<AzhkarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: context.read<BottomNavbarCubit>().scaffoldKey,
+      key: context.read<AzhkarCubit>().azhkarScaffoldKey,
       appBar: AppBar(
         title: BuildTitle(
           isSearch: context.watch<AzhkarCubit>().isSearch,

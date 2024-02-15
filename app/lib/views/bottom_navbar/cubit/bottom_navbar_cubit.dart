@@ -18,9 +18,43 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
   final GetStorage _box = GetStorage();
   final _key = "isDark";
 
-  int currentIndex = 2;
-  List<Widget> screens(context) =>
-      const [HomeScreen(), HadithScreen(), AzhkarScreen(), BookmarkScreen()];
+  int currentIndex = 1;
+  List<Widget> screens(context) => const [
+        HomeScreen(),
+        HadithScreen(),
+        AzhkarScreen(),
+        BookmarkScreen(),
+      ];
+
+  /* 
+  Todo: Separate Like Screens
+  List<AppBar> appBars(context) => [
+    AppBar(
+        title: BuildTitle(
+          isSearch: context.watch<HomeCubit>().isSearch,
+          controller: context.read<HomeCubit>().searchedTextEditingController,
+          runFilter: (searchedChar) =>
+              context.read<HomeCubit>().runFilter(searchedChar),
+        ),
+        actions: [
+          BuildAction(
+            isSearch: context.watch<HomeCubit>().isSearch,
+            clearSearched: () => context.read<HomeCubit>().clearSearched(),
+            startSearched: () =>
+                context.read<HomeCubit>().startSearched(context),
+          )
+        ],
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () => context
+              .read<BottomNavbarCubit>()
+              .scaffoldKey
+              .currentState!
+              .openDrawer(),
+          icon: Image.asset(ImageAssets.menuIcon),
+        ),
+      )
+  ];*/
   List<BottomNavigationBarItem> items() => [
         BottomNavigationBarItem(
           icon: Image.asset(
