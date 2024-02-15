@@ -14,24 +14,9 @@ class BottomNavbar extends StatelessWidget {
         var cubit = BottomNavbarCubit.get(context);
 
         return Scaffold(
-          /* key: cubit.scaffoldKey,
-          appBar: AppBar(
-            elevation: 0,
-            leading: IconButton(
-              onPressed: () => cubit.scaffoldKey.currentState!.openDrawer(),
-              icon: Image.asset(ImageAssets.menuIcon),
-            ),
-          ),
-          drawer: Drawer(
-            child: Column(
-              children: [
-                CustomDrawer(
-                  isDarkMode: cubit.theme,
-                  onTap: () => cubit.switchTheme(),
-                ),
-              ],
-            ),
-          ),*/
+          key: cubit.scaffoldKey,
+          appBar: cubit.appBars(context)[cubit.currentIndex],
+          drawer: cubit.getDrawer(context),
           bottomNavigationBar: CustomBottomNavbar(
             items: cubit.items(),
             onTap: (value) => cubit.changeBottomNavbar(value),

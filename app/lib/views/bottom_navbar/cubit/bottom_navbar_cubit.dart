@@ -1,5 +1,6 @@
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
+import 'package:app/utils/common_widgets.dart';
 import 'package:app/views/azhkar/azhkar_screen.dart';
 import 'package:app/views/bookmark/bookmark_screen.dart';
 import 'package:app/views/hadith/hadith_screen.dart';
@@ -20,41 +21,42 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
 
   int currentIndex = 0;
   List<Widget> screens(context) => const [
-        HomeScreen(),
-        HadithScreen(),
-        AzhkarScreen(),
-        BookmarkScreen(),
+        Center(child: Text("Home Screen")),
+        Center(child: Text("Hadith Screen")),
+        Center(child: Text("Azhkar Screen")),
+        Center(child: Text("Bookmark Screen")),
       ];
 
-  /* 
-  Todo: Separate Like Screens
   List<AppBar> appBars(context) => [
-    AppBar(
-        title: BuildTitle(
-          isSearch: context.watch<HomeCubit>().isSearch,
-          controller: context.read<HomeCubit>().searchedTextEditingController,
-          runFilter: (searchedChar) =>
-              context.read<HomeCubit>().runFilter(searchedChar),
+        AppBar(
+          title: const Text("Home Screen"),
+          leading: IconButton(
+            onPressed: () => scaffoldKey.currentState!.openDrawer(),
+            icon: Image.asset(ImageAssets.menuIcon),
+          ),
         ),
-        actions: [
-          BuildAction(
-            isSearch: context.watch<HomeCubit>().isSearch,
-            clearSearched: () => context.read<HomeCubit>().clearSearched(),
-            startSearched: () =>
-                context.read<HomeCubit>().startSearched(context),
-          )
-        ],
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () => context
-              .read<BottomNavbarCubit>()
-              .scaffoldKey
-              .currentState!
-              .openDrawer(),
-          icon: Image.asset(ImageAssets.menuIcon),
+        AppBar(
+          title: const Text("Hadith Screen"),
+          leading: IconButton(
+            onPressed: () => scaffoldKey.currentState!.openDrawer(),
+            icon: Image.asset(ImageAssets.menuIcon),
+          ),
         ),
-      )
-  ];*/
+        AppBar(
+          title: const Text("Azhkar Screen"),
+          leading: IconButton(
+            onPressed: () => scaffoldKey.currentState!.openDrawer(),
+            icon: Image.asset(ImageAssets.menuIcon),
+          ),
+        ),
+        AppBar(
+          title: const Text("Bookmark Screen"),
+          leading: IconButton(
+            onPressed: () => scaffoldKey.currentState!.openDrawer(),
+            icon: Image.asset(ImageAssets.menuIcon),
+          ),
+        ),
+      ];
   List<BottomNavigationBarItem> items() => [
         BottomNavigationBarItem(
           icon: Image.asset(
@@ -89,6 +91,8 @@ class BottomNavbarCubit extends Cubit<BottomNavbarState> {
           label: AppString.bottomNavigationBarItemBookmarkText,
         ),
       ];
+
+  Widget getDrawer(context) => buildCustomDrawer(context);
 
   void changeBottomNavbar(int value) {
     currentIndex = value;

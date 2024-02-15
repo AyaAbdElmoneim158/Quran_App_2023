@@ -26,12 +26,8 @@ class CustomDrawer extends StatelessWidget {
 
   Widget _buildTopHeader(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [AppColors.kPurpleD0Color, AppColors.kPurpleD00Color],
-        ),
+      decoration: BoxDecoration(
+        gradient: Styles.cardGradientColors,
       ),
       height: MediaQuery.of(context).size.height * 0.3,
       child: Stack(
