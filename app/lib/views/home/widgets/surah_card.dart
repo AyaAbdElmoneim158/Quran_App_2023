@@ -5,7 +5,7 @@ import 'package:app/views/home/model/surah_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SurahCard extends StatelessWidget {
+class SurahCard extends  StatelessWidget{
   const SurahCard({super.key, required this.surah, required this.index});
 
   final SurahModel surah;
