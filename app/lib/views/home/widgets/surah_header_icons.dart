@@ -1,10 +1,7 @@
-import 'dart:async';
-
 import 'package:app/utils/app_color.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/styles.dart';
 import 'package:app/views/bookmark/cubit/bookmark_cubit.dart';
-import 'package:app/views/home/cubit/home_cubit.dart';
 import 'package:app/views/bookmark/model/bookmark_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,7 +55,7 @@ class _SurahHeaderIconsState extends State<SurahHeaderIcons> {
               // ),
               // const SizedBox(width: 8),
 //! Play ----------------------------------------------------------------------------------------------------------------------------
-              widget.hasAudio
+              /*  widget.hasAudio
                   ? GestureDetector(
                       onTap: () async {
                         await context
@@ -77,7 +74,7 @@ class _SurahHeaderIconsState extends State<SurahHeaderIcons> {
                           : Image.asset(ImageAssets.playOutlineIcon),
                     )
                   : const SizedBox(),
-              const SizedBox(width: 8),
+              const SizedBox(width: 8),*/
 //! Add ----------------------------------------------------------------------------------------------------------------------------
               GestureDetector(
                 onTap: () async {

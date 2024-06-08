@@ -30,7 +30,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "com.example.app"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34//flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -54,8 +54,8 @@ android {
         // minSdkVersion flutter.minSdkVersion
         // targetSdkVersion flutter.targetSdkVersion
         minSdkVersion  21  // Specify the minimum SDK version here
-        targetSdkVersion 30
-        versionCode flutterVersionCode.toInteger()
+        targetSdkVersion 34
+        versionCode 6 //flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
@@ -68,9 +68,9 @@ android {
        }
    }
    buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-        }
+//        debug {
+//            signingConfig signingConfigs.debug
+//        }
         release {
             minifyEnabled true
             shrinkResources true

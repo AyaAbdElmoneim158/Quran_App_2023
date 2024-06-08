@@ -1,4 +1,3 @@
-import 'package:app/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 Future<bool?> showClearItemConfirmationDialog(BuildContext context) {
@@ -8,19 +7,31 @@ Future<bool?> showClearItemConfirmationDialog(BuildContext context) {
       return AlertDialog(
         title: Text(
           "Confirm",
-          style: Styles.splashAppNameTextStyle(context),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         content: Text(
           "Are you sure you wish to delete this item?",
-          style: Styles.splashDecTextStyle(context),
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14),
         ),
         actions: <Widget>[
           TextButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: const Text("Confirm")),
+              child: Text(
+                "Confirm",
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontSize: 12),
+              )),
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text("Cancel"),
+            child: Text(
+              "Cancel",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontSize: 12),
+            ),
           ),
         ],
       );

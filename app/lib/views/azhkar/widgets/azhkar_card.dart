@@ -1,8 +1,6 @@
-import 'package:app/helper/audioplayers_helper.dart';
 import 'package:app/utils/app_color.dart';
 import 'package:app/utils/asset_manager.dart';
 import 'package:app/utils/common_widgets.dart';
-import 'package:app/utils/constance.dart';
 import 'package:app/utils/styles.dart';
 import 'package:app/views/azhkar/model/azhkar_model.dart';
 import 'package:app/views/bookmark/cubit/bookmark_cubit.dart';
@@ -27,7 +25,7 @@ BuildGeneralCard buildAzhkarCard(int index, AzhkarModel azhkar) {
               textDirection: TextDirection.rtl,
               child: Text(
                 azhkar.array[index].text,
-                maxLines: 6,
+                maxLines: 5,
                 overflow: TextOverflow.ellipsis,
                 style: Styles.hadithDetailsTextStyle,
               ),
@@ -35,7 +33,7 @@ BuildGeneralCard buildAzhkarCard(int index, AzhkarModel azhkar) {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Align(
+                /*Align(
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
@@ -51,7 +49,7 @@ BuildGeneralCard buildAzhkarCard(int index, AzhkarModel azhkar) {
                     ),
                   ),
                 ),
-                SizedBox(width: Constance.padding16),
+                SizedBox(width: Constance.padding16),*/
                 BlocBuilder<BookmarkCubit, BookmarkState>(
                   builder: (context, state) {
                     var cubit = BookmarkCubit.get(context);

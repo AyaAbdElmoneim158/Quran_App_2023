@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:app/utils/app_color.dart';
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
@@ -16,11 +17,58 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _buildTopHeader(context),
-        _buildChangeTheme(context),
-      ],
+    return SafeArea(
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: Styles.cardGradientColors,
+            ),
+            height: MediaQuery.of(context).size.height * 0.3,
+            width: double.infinity,
+            child:
+                // Text("data"),
+                Stack(
+              children: [
+                const SizedBox(height: 38),
+                Positioned(
+                  left: 24,
+                  top: 24,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FadeInLeftBig(
+                        duration: const Duration(milliseconds: 500),
+                        child: Text(
+                          AppString.appName,
+                          style: Styles.drawerQuranTextStyle(),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      FadeInLeftBig(
+                        duration: const Duration(milliseconds: 750),
+                        child: Text(
+                          AppString.splashText,
+                          style: Styles.drawerQuranDescTextStyle(context),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: Image.asset(
+                    ImageAssets.quranImage,
+                  ),
+                )
+              ],
+            ),
+          ),
+          // _buildTopHeader(context),
+          _buildChangeTheme(context),
+        ],
+      ),
     );
   }
 
@@ -32,6 +80,7 @@ class CustomDrawer extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.3,
       child: Stack(
         children: [
+          const SizedBox(height: 38),
           Positioned(
             left: 24,
             top: 24,

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:app/utils/app_color.dart';
 import 'package:app/utils/app_string.dart';
 import 'package:app/utils/asset_manager.dart';
@@ -67,7 +68,8 @@ Widget buildLoading(BuildContext context) {
 }
 
 Widget buildEmptyList(BuildContext context) {
-  return Center(
+  return ZoomIn(
+    duration: const Duration(milliseconds: 750),
     child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -79,7 +81,10 @@ Widget buildEmptyList(BuildContext context) {
           const SizedBox(height: 8),
           Text(
             AppString.emptyList,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  color: AppColors.kPurpleD3Color,
+                  fontWeight: FontWeight.w700,
+                ),
           ),
         ],
       ),
@@ -101,7 +106,7 @@ SizedBox buildErrorFetchList(BuildContext context) {
           const SizedBox(height: 16),
           Text(
             AppString.errorList,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.labelSmall,
           ),
         ],
       ),

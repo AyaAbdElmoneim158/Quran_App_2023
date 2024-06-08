@@ -3,8 +3,21 @@ import 'package:app/views/splash/widgets/splash_image.dart';
 import 'package:app/views/splash/widgets/splash_intro_text.dart';
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatelessWidget {
+import 'service/splash_service.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    SplashService.goToBottomNavbar();
+  }
 
   @override
   Widget build(BuildContext context) {

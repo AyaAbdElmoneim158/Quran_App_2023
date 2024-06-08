@@ -5,14 +5,26 @@ void showClearAllConfirmationDialog(BuildContext context, cubit) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Clear All Bookmarks'),
-        content: const Text('Are you sure you want to clear all bookmarks?'),
+        title: Text(
+          'Clear All Bookmarks',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        content: Text(
+          'Are you sure you want to clear all bookmarks?',
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14),
+        ),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(); // Close the dialog
             },
-            child: const Text('Cancel'),
+            child: Text(
+              'Cancel',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontSize: 12),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -20,7 +32,13 @@ void showClearAllConfirmationDialog(BuildContext context, cubit) {
               cubit.getBookmarks();
               Navigator.of(context).pop(); // Close the dialog
             },
-            child: const Text('Clear All'),
+            child: Text(
+              'Clear All',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontSize: 12),
+            ),
           ),
         ],
       );

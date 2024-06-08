@@ -1,11 +1,13 @@
 // ignore: unnecessary_import, depend_on_referenced_packages
-import 'package:app/helper/read_json.dart';
-import 'package:app/utils/asset_manager.dart';
+// import 'package:app/helper/read_json.dart';
+// import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/azhkar/model/azhkar_model.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import, depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../helper/jsons/adhkar.dart';
 part 'azhkar_state.dart';
 
 class AzhkarCubit extends Cubit<AzhkarState> {
@@ -20,9 +22,10 @@ class AzhkarCubit extends Cubit<AzhkarState> {
     }
     try {
       emit(FetchAzhkarDataListLoading());
-      var data = await ReadJson.readJson(ImageAssets.azhkarJson);
+      /*var data = await ReadJson.readJson(ImageAssets.azhkarJson);
       List items = data;
-      realAzhkarList = items.map((ele) => AzhkarModel.fromJson(ele)).toList();
+      realAzhkarList = items.map((ele) => AzhkarModel.fromJson(ele)).toList();*/
+      realAzhkarList = adhkar.map((ele) => AzhkarModel.fromJson(ele)).toList();
       searchedList = realAzhkarList;
       debugPrint("Fetch AzhkarDataList Success : ${realAzhkarList.length}");
       emit(FetchAzhkarDataListSuccess());

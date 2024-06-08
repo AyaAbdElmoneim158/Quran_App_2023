@@ -1,13 +1,14 @@
-import 'dart:async';
-import 'package:app/helper/audioplayers_helper.dart';
-import 'package:app/utils/asset_manager.dart';
+// import 'dart:async';
+// import 'package:app/helper/audioplayers_helper.dart';
+// import 'package:app/utils/asset_manager.dart';
 import 'package:app/views/home/model/surah_model.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import, depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:app/helper/read_json.dart';
+// import 'package:share_plus/share_plus.dart';
+// import 'package:app/helper/read_json.dart';
+import '../../../helper/jsons/quran.dart';
 
 part 'home_state.dart';
 
@@ -25,9 +26,11 @@ class HomeCubit extends Cubit<HomeState> {
     }
     try {
       emit(FetchSurahDataListLoading());
-      var data = await ReadJson.readJson(ImageAssets.quranJson);
+      /*var data = await ReadJson.readJson(ImageAssets.quranJson);
       List items = data;
-      surahList = items.map((ele) => SurahModel.fromJson(ele)).toList();
+      surahList = items.map((ele) => SurahModel.fromJson(ele)).toList();*/
+      surahList = quran.map((ele) => SurahModel.fromJson(ele)).toList();
+
       searchedList = surahList;
       debugPrint("Fetch SurahDataList Success : ${surahList.length}");
       emit(FetchSurahDataListSuccess());
@@ -91,23 +94,23 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ClearSearchedState());
   }
 
-  Future<void> shareAyet(String ayet) async {
-    return await Share.shareFiles(
-      ['assets/images/quran_splash.png'],
-      text: ayet,
-    );
-  }
+  // Future<void> shareAyet(String ayet) async {
+  //   return await Share.shareFiles(
+  //     ['assets/images/quran_splash.png'],
+  //     text: ayet,
+  //   );
+  // }
 
   Duration audioDuration = Duration.zero;
   bool isPlay = false;
 
-  Future<void> playAudio({required String path}) async {
-    // audioDuration = Duration.zero;
-    await AudioplayersHelper.play(path: path);
-    audioDuration = (await AudioplayersHelper.getDuration(path: path))!;
-    isPlay = true;
-    Timer(audioDuration, () {
-      isPlay = false;
-    });
-  }
+  // Future<void> playAudio({required String path}) async {
+  //   // audioDuration = Duration.zero;
+  //   await AudioplayersHelper.play(path: path);
+  //   audioDuration = (await AudioplayersHelper.getDuration(path: path))!;
+  //   isPlay = true;
+  //   Timer(audioDuration, () {
+  //     isPlay = false;
+  //   });
+  // }
 }
